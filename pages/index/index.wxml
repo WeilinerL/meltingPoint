@@ -7,7 +7,7 @@
     <text style="padding: 0 6rpx 0 0;">鱼塘</text>
     <text class="mp-text-blue">信息</text>
   </view> 
-  <view class="device-list">
+  <view class="device-list" wx:if="{{pools.length != 0}}">
     <view class="margin-bottom-sm animation-slide-bottom" wx:for="{{pools}}" wx:key="index" id="{{item.pool_id}}" data-pool-id="{{item.pool_id}}" bindtap="seeFishpondDetail">
       <!-- 设置点击动画 -->
       <!-- <wxs module="tap">
@@ -26,9 +26,15 @@
           <image src="{{item.fishpondPic}}"></image>
         </view>
         <view class="fishpond-info">
-          <view class="fishpond-name mp-text-blue">鱼塘: {{item.pool_id}}</view>
-          <view class="fishpond-address">地址: {{item.pool_name}}</view>
-          <view class="device-num">编号: {{item.serial_id}}</view>
+          <view class="fishpond-name mp-text-blue">
+            <text decode="{{true}}">鱼塘: &nbsp;{{item.pool_id}}</text>
+          </view>
+          <view class="fishpond-address">
+            <text decode="{{true}}">地址: &nbsp;{{item.pool_name}}</text>
+          </view>
+          <view class="device-num">
+            <text decode="{{true}}">编号: &nbsp;{{item.serial_id}}</text>
+          </view>
           <view class="detail">
             <text class="padding-right-sm icon-info"></text>
             <text class="text-gray">查看设备</text>
@@ -36,6 +42,9 @@
         </view>
       </view>
     </view>
+  </view>
+  <view wx:else>
+    <empty-data></empty-data>
   </view>
 </view>
 

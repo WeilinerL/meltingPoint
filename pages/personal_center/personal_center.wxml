@@ -19,7 +19,7 @@
   <view class="func-list animation-slide-bottom">
     <view class="my-fishpond-info" hover-class="button-hover">
       <view class="func-item">
-        <text></text>
+        <text class="icon-all padding-right-sm"></text>
         <text>我的鱼塘信息</text>
       </view>
       <view>
@@ -48,7 +48,7 @@
   <!-- 校准设备 -->
   <view class="calibration" hover-class="button-hover">
     <view class="func-item">
-      <text></text>
+      <text class="icon-check padding-right-sm"></text>
       <text>校准我的设备</text>
     </view>
     <view>
@@ -73,4 +73,7 @@
     <button class="cu-btn mp-bg-blue lg text-white margin-tb logout" bindtap="logout">退出登录</button>
   </view>
 </view>
+
+<!-- 提示框 -->
+<van-dialog id="van-dialog" />
 

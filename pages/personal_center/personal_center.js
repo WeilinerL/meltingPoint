@@ -1,4 +1,6 @@
 // pages/personal_center/personal_center.js
+import Dialog from '../../vant_weapp/components/dist/dialog/dialog';
+
 Page({
 
   /**
@@ -27,6 +29,22 @@ Page({
    */
   onShow: function () {
 
+  },
+  /* 方法区 */
+  logout() {
+    Dialog.confirm({
+      title: '退出登录',
+      message: '您确定要退出登录吗？退出登录后当您需要再次使用本服务时需要重新登陆'
+    }).then(() => {
+      console.log('[INFO] 用户退出登录')
+      // 清除缓存 退出登录
+      wx.clearStorageSync();
+      wx.reLaunch({
+        url: '../login/login',
+      })
+    }).catch(() => {
+      console.log('[INFO] 用户取消退出登录')
+    });
   },
 
   /**

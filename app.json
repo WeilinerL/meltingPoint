@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/login/login",
+    "pages/index/index",
     "pages/personal_center/personal_center",
     "pages/data_collection/data_collection",
     "pages/device_list/device_list",

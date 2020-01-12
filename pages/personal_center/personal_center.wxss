@@ -1,7 +1,7 @@
 /* pages/personal_center/personal_center.wxss */
 /* 点击动画 */
 .button-hover {
-  transform: translate(6rpx,0);
+  transform: translate(3rpx,0);
 }
 
 /* 头像 */

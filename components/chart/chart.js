@@ -5,7 +5,7 @@ import Toast from '../../vant_weapp/components/dist/toast/toast';
 //获取应用实例
 const app = getApp()
 
-function getOption(title, color) {
+function getOption(title, color, xData = ['2020-01-10 7:00', '2020-01-10 11:00', '2020-01-10 13:00', '2020-01-10 15:00', '2020-01-10 17:00', '2020-01-10 19:00', '2020-01-10 21:00'], yData = [120, 132, 101, 134, 90, 230, 210], interval = 0) {
   var option = {
     title: {
       text: title,
@@ -32,7 +32,25 @@ function getOption(title, color) {
       {
         type: 'category',
         boundaryGap: false,
-        data: ['7:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00']
+        data: xData,
+        axisLabel: {
+          interval: interval,//0代表显示所有x轴标签
+          rotate: 45, //代表逆时针旋转45度,
+          formatter: function (value, index) {//自定义X轴的显示
+            var text1 = value.split(" ")[0];
+            var text2 = value.split(" ")[1];
+            var year = text1.split("-")[0];
+            var month = text1.split("-")[1];
+            var day = text1.split("-")[2];
+            var hour = text2.split(":")[0];
+            var min = text2.split(":")[1];
+            var time = year + "/" + month + "/" + day + " " + hour + ":" + min
+            if (index === 0) {
+              time = null;
+            }
+            return time;
+          }
+        }
       }
     ],
     yAxis: [
@@ -56,7 +74,7 @@ function getOption(title, color) {
             }
           }
         },
-        data: [120, 132, 101, 134, 90, 230, 210]
+        data: yData
       }
     ]
   };
@@ -120,12 +138,14 @@ Component({
   lifetimes: {
     attached() {
 
+    },
+    ready() {
+      this.initPoolData(); // 初始化池塘数据      
     }
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
-    show: function () {
-      this.initPoolData(); // 初始化池塘数据
+    show: function () {   
     },
   },
   /**
@@ -204,12 +224,13 @@ Component({
         this.setData({
           poolDatas: poolDatas
         });
+        // 更新echarts
+        this.updateEcharts(poolDatas);
         app.hideLoading();
       },
       fail => {
         Toast("获取数据失败!");
         app.hideLoading();
-
       })
     },
     /* 更新数据信息 */
@@ -243,6 +264,8 @@ Component({
           this.setData({
             poolDatas: poolDatas
           });
+          // 更新echarts
+          this.updateEcharts(poolDatas);
           app.hideLoading();
         },
         fail => {
@@ -250,6 +273,34 @@ Component({
           app.hideLoading();
 
         })
+    },
+    /* 更新echarts */
+    updateEcharts(poolDatas) {
+      // 提取时间
+      var times = poolDatas.map(item => {
+        return item.data_time;
+      })
+      // 提取温度
+      var temperatures = poolDatas.map(item => {
+        return item.temperature;
+      })
+      // 提取ph
+      var phs = poolDatas.map(item => {
+        return item.ph;
+      })
+      // 提取溶解氧
+      var dissolvedOxygens = poolDatas.map(item => {
+        return item.dissolved_oxygen;
+      })
+      // 提取盐度
+      var salinitys = poolDatas.map(item => {
+        return item.salinity;
+      })
+      // 更新 
+      chartTemperature.setOption(getOption("温度", '#0081ff', times, temperatures, 5));
+      chartPH.setOption(getOption("pH", '#f37b1d', times, phs, 5));
+      chartO2.setOption(getOption("溶解氧", '#39b54a', times, dissolvedOxygens, 5));
+      chartSalinity.setOption(getOption("盐度", '#8799a3', times, salinitys, 5));
     }
   }
 })

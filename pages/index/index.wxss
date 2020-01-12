@@ -29,3 +29,7 @@ page {
   justify-content: flex-start;
   background-color: #fff;
 }
+
+.index-container .device-list .device-item .fishpond-info {
+  margin-left: 30rpx;
+}

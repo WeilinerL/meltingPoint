@@ -44,6 +44,8 @@ App({
         this.globalData.systemInfo.system = e.system;
       }
     });
+  },
+  onShow: function() {
     this.checkLocalUserInfo();
   },
   /* 是否登录 */
@@ -65,6 +67,9 @@ App({
     if (this.autoLogin()) {
       console.log("[INFO]用户已登录");
       this.globalData.loggedIn = true;
+      wx.reLaunch({
+        url: 'pages/index/index',
+      })
     }
   },
   /* 获取用户登录信息 */

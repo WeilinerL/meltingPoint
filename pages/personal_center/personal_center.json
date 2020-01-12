@@ -1,4 +1,6 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-dialog": "../../vant_weapp/components/dist/dialog/index"
+  }
 }
