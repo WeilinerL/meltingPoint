@@ -1,0 +1,46 @@
+/* components/chart/chart.wxss */
+page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.chart-wrapper .header view{
+  display: inline-block;
+  text-align: center;
+  width: 18%;
+  height: 66rpx;
+  line-height: 66rpx;
+}
+
+.chart-wrapper .data-table .content-wrapper {
+   max-height: 1000rpx;
+   overflow-y: scroll;
+}
+
+.chart-wrapper .content view{
+  display: inline-block;
+  text-align: center;
+  width: 18%;
+  height: 66rpx;
+  line-height: 66rpx;
+}
+
+.chart-wrapper .header .time {
+  width: 28%;
+}
+
+.chart-wrapper .content {
+  font-size: 20rpx;
+}
+
+.chart-wrapper .content .time {
+  width: 28%;
+}
+
+/* 统计折线图 */
+
+.chart-wrapper .echarts {
+  width: 100%;
+  height: 600rpx;
+  overflow-x: hidden;
+}

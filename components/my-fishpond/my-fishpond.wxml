@@ -1,0 +1,7 @@
+<!--components/my-fishpond.wxml-->
+<view class="wrapper marigin animation-scale-down">
+  <view class="title padding text-center mp-text-blue text-xl padding-bottom-sm">
+    <text class="title text-bold">我的鱼塘</text>
+  </view>
+  <view class="divider-line mp-bg-blue"></view>
+</view>

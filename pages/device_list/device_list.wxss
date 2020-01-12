@@ -1,0 +1,32 @@
+/* pages/device_list/device_list.wxss */
+
+.device-list-wrapper {
+  overflow: hidden
+}
+
+
+.device-list-wrapper .device-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 16rpx;
+  align-items: center;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.device-list-wrapper .device-item .img {
+  width: 96rpx;
+  height: 96rpx;
+  background-color: #f1f1f1;
+  vertical-align: middle;
+  border-radius: 100%;
+}
+
+.device-list-wrapper .device-item .calibration {
+  position: absolute;
+  right: 26rpx;
+  width: 166rpx;
+  font-size: 26rpx;
+  letter-spacing: 12rpx;
+}

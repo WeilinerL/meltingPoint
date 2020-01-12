@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/personal_center/personal_center",
+    "pages/data_collection/data_collection",
+    "pages/device_list/device_list",
+    "pages/calibration/calibration",
+    "pages/calibration_success/calibration_success"
+  ],
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "color": "#404040",
+    "selectedColor": "#308bb1",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabbar/推荐2.png",
+        "selectedIconPath": "images/tabbar/推荐.png"
+      },
+      {
+        "pagePath": "pages/personal_center/personal_center",
+        "text": "我的",
+        "iconPath": "images/tabbar/个人中心2.png",
+        "selectedIconPath": "images/tabbar/个人中心.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundColorTop": "#f1f1f1",
+    "backgroundColorBottom": "#f1f1f1",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "我的鱼塘",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "my-fishpond": "/components/my-fishpond/my-fishpond",
+    "top-bar": "/components/top-bar/top-bar",
+    "weather-card": "/components/weather-card/weather-card",
+    "chart": "/components/chart/chart",
+    "empty-data": "/components/empty-data/empty-data"
+  },
+  "sitemapLocation": "sitemap.json"
+}

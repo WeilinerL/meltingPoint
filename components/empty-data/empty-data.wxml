@@ -1,0 +1,10 @@
+<!--components/empty-data.wxml-->
+<view class="bg-white">
+  <view class="text-center padding-lg mp-text-blue infinite-floating-animation" style="font-size: 160rpx; padding-bottom: 0;">
+    <text class='icon-{{icon}}'></text>
+  </view>
+  <view class="text-center padding-sm mp-text-gray">
+    <text class='text-xl'>{{title}} \n</text>
+    <text class='text-lg'>{{description}}</text>
+  </view>
+</view>

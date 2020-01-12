@@ -1,0 +1,82 @@
+/* pages/personal_center/personal_center.wxss */
+/* 点击动画 */
+.button-hover {
+  transform: translate(6rpx,0);
+}
+
+/* 头像 */
+.my-wrapper .head {
+  border-top: 1px solid gainsboro;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+}
+
+.my-wrapper .head .img .head-portrait {
+  width: 160rpx;
+  height: 160rpx;
+  background-color: gainsboro;
+  border-radius: 100%;
+}
+
+.my-wrapper .head .settings {
+  position: absolute;
+  right: 26rpx;
+  font-size: 36rpx;
+}
+
+.my-wrapper .func-list {
+  margin: 36rpx 0;
+}
+
+/* 功能列表 */
+.my-wrapper .func-list .my-fishpond-info,.feedback,.my-settings {
+  border-top: 1px solid gainsboro;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.my-wrapper .func-list .my-fishpond-info {
+  border-top: none;
+}
+
+.my-wrapper .func-item {
+  padding: 20rpx;
+  flex-grow: 1;
+}
+
+/* 校准设备 */
+.my-wrapper .calibration {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* 我的消息 */
+.my-wrapper .my-messages {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 36rpx 0;
+  position: relative;
+}
+
+.cu-tag.badge {
+  width: 76rpx;
+  top: 0;
+  right: 60rpx;
+  bottom: 0;
+  margin: auto;
+  line-height: 28rpx;
+}
+
+/* 退出登录 */
+.my-wrapper .logout {
+  width: 100%;
+}

@@ -1,0 +1,29 @@
+/* components/weather-card/weathercard.wxss */
+.weather-card-wrapper .location .city{
+  padding: 0 6rpx 0 26rpx;
+}
+
+.weather-card-wrapper .weather-scroll-view .cu-item {
+  height: 236rpx !important;
+  width: 366rpx !important;
+  /* display: table-cell;
+  vertical-align: middle; */
+}
+
+.weather-card-wrapper .weather-scroll-view .cu-item .content {
+  transform: translateY(20%);
+}
+
+.weather-card-wrapper .weather-scroll-view .cu-item .content view {
+  height: 56rpx;
+  line-height: 56rpx;
+}
+.weather-card-wrapper .weather-scroll-view .cu-item .content view .dot {
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+  margin: 0 16rpx 0 0;
+  border-radius: 100%;
+  /* background-color: bisque; */
+}
+

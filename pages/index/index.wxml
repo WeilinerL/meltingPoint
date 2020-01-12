@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar title="我的鱼塘列表"></top-bar>
+<view class="index-container">
+  <my-fishpond></my-fishpond> 
+  <view class="text-center text-title text-bold padding bg-white animation-slide-bottom">
+    <text style="padding: 0 6rpx 0 0;">鱼塘</text>
+    <text class="mp-text-blue">信息</text>
+  </view> 
+  <view class="device-list">
+    <view class="margin-bottom-sm animation-slide-bottom" wx:for="{{pools}}" wx:key="index" id="{{item.pool_id}}" data-pool-id="{{item.pool_id}}" bindtap="seeFishpondDetail">
+      <!-- 设置点击动画 -->
+      <!-- <wxs module="tap">
+        var tap = function(translate, id) {
+          var arr = translate.split("___");
+          if(id == arr[1]) {
+            return arr[0];
+          } else {
+            return 'none';
+          }
+        }
+        module.exports.tap = tap;
+      </wxs> -->
+      <view class="device-item" hover-class="button-hover">
+        <view class="fishpond-pic margin">
+          <image src="{{item.fishpondPic}}"></image>
+        </view>
+        <view class="fishpond-info">
+          <view class="fishpond-name mp-text-blue">鱼塘: {{item.pool_id}}</view>
+          <view class="fishpond-address">地址: {{item.pool_name}}</view>
+          <view class="device-num">编号: {{item.serial_id}}</view>
+          <view class="detail">
+            <text class="padding-right-sm icon-info"></text>
+            <text class="text-gray">查看设备</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />

@@ -1,0 +1,34 @@
+<!--pages/login/login.wxml-->
+<view class="login-wrapper">
+  <my-fishpond></my-fishpond>
+  <view class="content">
+    <view class="text-center text-title text-bold">
+      <text style="padding: 0 6rpx 0 0;">登录</text>
+      <text class="mp-text-blue">账号</text>
+    </view>
+    <view class="input-box-form margin padding">
+      <view class="form-item">
+        <view class="input-item">
+          <text class="icon-mobile padding-lr lg"></text>
+          <input class="weui-input" placeholder="手机号码" maxlength='11' bindinput="useridInput" value="{{username}}" bindinput="usernameInput"/>                
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="input-item" style="border-top-width: 0;">
+          <text class="icon-lock padding-lr lg"></text>
+          <input placeholder="登录密码" password="{{passwordShow}}" bindinput="passwdInput" value="{{password}}"></input>     
+          <switch bindtap="showPassword" class="remember"></switch>
+        </view>
+      </view>
+      <view>
+        <button bindtap="login" class="margin-tb lg login mp-bg-blue" hover-class="mp-button-hover">登录</button> 
+        <view class="text-center mp-text-blue forget-password" hover-class="button-hover">
+          <text bindtap="forgetTap" >忘记密码?</text>
+        </view>        
+      </view>   
+    </view>
+  </view>
+</view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />

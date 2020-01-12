@@ -1,0 +1,64 @@
+<!--components/chart/chart.wxml-->
+<view class="chart-wrapper">
+  <view class="data-table">
+    <view class="header text-lg" style="color: #000">
+      <view class="time">
+        <text>时间</text>
+      </view>
+      <view>
+        <text>温度</text>
+      </view>
+      <view>
+        <text>pH</text>
+      </view>
+      <view>
+        <text>溶解氧</text>
+      </view>
+      <view>
+        <text>盐度</text>
+      </view>
+    </view>
+    <view class="content-wrapper" wx:if="{{poolDatas.length != 0}}"  bindtap="navToDeviceList">
+       <view 
+        class="content text-lg {{index % 2 == 0 ? 'bg-white': ''}}" 
+        style="color: #000; border-top: 1px solid #f1f1f1; border-bottom: 1px solid #f1f1f1;"
+        wx:for="{{poolDatas}}"
+        wx:key="index"
+      >
+        <view class="time">
+          <text>{{item.data_time}}</text>
+        </view>
+        <view>
+          <text>{{item.temperature}}</text>
+        </view>
+        <view>
+          <text>{{item.ph}}</text>
+        </view>
+        <view>
+          <text>{{item.dissolved_oxygen}}</text>
+        </view>
+        <view>
+          <text>{{item.salinity}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <empty-data title="暂无数据"></empty-data>
+    </view>
+  </view>
+
+  <view class="echarts margin-tb">
+    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecTemperature }}"></ec-canvas>
+  </view>
+  <view class="echarts margin-tb">
+    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecPH }}"></ec-canvas>
+  </view>
+  <view class="echarts margin-tb">
+    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecO2 }}"></ec-canvas>
+  </view>
+  <view class="echarts margin-tb">
+    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecSalinity }}"></ec-canvas>
+  </view>
+</view>
+<!-- 提示框 -->
+<van-toast id="van-toast" />

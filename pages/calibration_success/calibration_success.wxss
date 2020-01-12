@@ -1,0 +1,6 @@
+/* pages/calibration_success/calibration_success.wxss */
+.title-text {
+  height: 20vh;
+  line-height: 20vh;
+  margin-top: 1px;
+}

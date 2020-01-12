@@ -1,0 +1,26 @@
+<!--components/weather-card/weathercard.wxml-->
+<view class="weather-card-wrapper animation-slide-bottom">
+  <view class="location bg-white margin-left margin-tb">
+    <text class="city text-lg mp-text-blue">{{location.city}}</text>
+    <text>{{location.area}}</text>
+  </view>
+  <view class="weather-scroll-view">
+    <scroll-view scroll-x class="nav margin" scroll-left="{{scrollLeft}}" scroll-with-animation>
+      <view class="cu-item {{index==TabCur?'mp-text-blue':''}} bg-white" wx:for="{{location.weatherForecast}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}" style="position: relative; overflow: hidden;">
+        <view class="padding-lr text-black content">
+          <view class="weather-and-temperature">
+            <text class="text-xl">{{item.type}} </text>
+            <text decode="{{true}}">{{item.low}}&nbsp;至&nbsp;{{item.high}}℃</text>
+          </view>
+          <view>
+            <text class="text-grey">{{item.fengxiang}} {{item.fengli}}</text>
+          </view>
+          <view>
+            <text class="dot {{index==TabCur?'mp-bg-blue':''}}" style="background-color: {{index==TabCur?'':'bisque'}};"></text>
+            <text class="text-gray">{{item.date}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+/* pages/data_collection/data_collection.wxss */
+
+.data-collection-wrapper {
+  width:100%;
+  overflow-x: hidden;
+}
+
+.data-collection-wrapper .time-choose {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.data-collection-wrapper .time-choose .cu-item {
+  width: 126rpx;
+  text-align: center;
+}
+
+.data-collection-wrapper chart {
+  width:100%;
+  overflow-x: hidden;
+}

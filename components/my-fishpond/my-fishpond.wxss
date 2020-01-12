@@ -1,0 +1,5 @@
+/* components/my-fishpond.wxss */
+
+.wrapper .divider-line {
+  height: 2rpx;
+}

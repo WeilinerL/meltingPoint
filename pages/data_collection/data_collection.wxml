@@ -1,0 +1,24 @@
+<!--pages/data_collection/data_collection.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar hasBack="true" navigationBarTitleText="数据统计"></top-bar>
+<view class="data-collection-wrapper">
+  <!-- 我的鱼塘 -->
+  <my-fishpond></my-fishpond>
+  <view class="time-choose">
+    <scroll-view scroll-x class="nav" scroll-with-animation scroll-left="{{scrollLeft}}" style="width: 80%;">
+      <view class="cu-item {{index==TabCur?'mp-text-blue cur':''}}" wx:for="{{timeChoose}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}" data-day="{{item.day}}" style="position: relative">
+        {{item.time}}
+      </view>
+    </scroll-view>
+    <text class="self-define" bind:tap="delfDefine">自定义</text>
+  </view>
+  <!-- 天气组件 -->
+  <weather-card></weather-card>
+  <!-- 图表统计组件 -->
+  <chart poolId="{{poolId}}" id="chart"></chart>
+</view>
+
+<!-- 提示框 -->
+<van-dialog id="van-dialog" />
+<!-- 提示框 -->
+<van-toast id="van-toast" />

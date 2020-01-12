@@ -1,0 +1,52 @@
+/* pages/login/login.wxss */
+/* 点击动画 */
+.button-hover {
+  background-color: #f6f6f6;
+  transform: translate(2rpx,2rpx);
+}
+
+.login-wrapper .content .text-title{
+  height: 20vh;
+  line-height: 20vh;
+}
+
+.login-wrapper .content .padding-lr-sm {
+  padding-left: 6rpx;
+  padding-right: 6rpx;
+}
+
+.login-wrapper .content .input-box-form {
+  position: relative;
+}
+
+.input-box-form .input-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid gainsboro;
+  height: 96rpx;
+  background-color: #fff;
+}
+
+.input-box-form .input-item input {
+  width: 60%;
+  height: 36rpx;
+}
+
+.input-box-form .input-item .remember {
+  position: absolute;
+  right: 56rpx;
+  top: 144rpx;
+  width: 96rpx;
+  height: 36rpx;
+}
+
+.content .login {
+  width: 100%;
+  color: #fff;
+}
+
+/* transform适用于：所有块级元素及某些内联元素 */
+.content .forget-password {
+  will-change: transform;
+}

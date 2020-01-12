@@ -1,0 +1,24 @@
+<!--pages/device_list/device_list.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar hasBack="true" navigationBarTitleText="设备列表"></top-bar>
+<view class="device-list-wrapper">
+  <!-- 我的鱼塘 -->
+  <my-fishpond></my-fishpond>
+  <view class="content">
+    <view class="device-item animation-slide-bottom" wx:for="{{deviceList}}" wx:key="index">
+      <view class="img margin-lr">
+        <image src="{{itme.imgSrc}}"></image>
+      </view>
+      <view class="name-and-calibration-time">
+        <view class="device-name text-lg">
+          <text>{{item.deviceName}}</text>
+        </view>
+        <view class="device-calibration-time text-gray text-sm">
+          <text>校准时间: </text>
+          <text>{{item.calibrationTime}}</text>
+        </view>
+      </view>
+      <button class="cu-btn mp-bg-blue calibration text-white" bindtap="navToCalibration">校准</button>
+    </view>
+  </view>
+</view>

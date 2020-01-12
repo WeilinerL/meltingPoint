@@ -1,0 +1,42 @@
+@import "colorui/main.wxss";
+@import "colorui/animation.wxss";
+@import "colorui/icon.wxss";
+@import "assets/font/bahnschrift.wxss";
+
+/**app.wxss**/
+page {
+  font-family: 'Bahnschrift' !important;
+  min-height: 100%;
+  background-color: #f6f6f6;
+  /* css 变量声明 */
+  --Blue: #308bb1;
+  --Gray: gainsboro; 
+}
+
+.mp-text-blue {
+  color: var(--Blue); 
+}
+
+.mp-text-gray {
+  color: var(--Gray); 
+}
+
+.mp-bg-blue {
+  background-color: var(--Blue); 
+}
+
+.mp-bg-gray {
+  background-color: var(--Gray); 
+}
+
+.mp-button-hover {
+  transform: translate(2rpx,2rpx);
+}
+
+.mp-border-blue {
+  border: 1px solid var(--Blue)
+}
+
+.mp-button {
+  width: 100%;
+}

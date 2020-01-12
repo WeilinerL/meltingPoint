@@ -1,0 +1,17 @@
+<!--pages/calibration_success/calibration_success.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar hasBack="true" navigationBarTitleText="校准成功"></top-bar>
+<!-- 校准成功 -->
+<view class="calibration-success-wrapper">
+  <view class="content title-text text-center bg-white">
+    <text>校准成功</text>
+  </view>
+  <!-- 查看我的设备 -->
+  <view class="padding-lr animation-scale-up">
+    <button class="cu-btn mp-bg-blue lg text-white margin-top mp-button" bindtap="viewMyDevice">查看我的设备</button>
+  </view>
+  <!-- 返回首页 -->
+  <view class="padding-lr animation-scale-up">
+    <button class="cu-btn lg text-white margin-top mp-button mp-text-blue bg-white mp-border-blue" bindtap="backToIndex">返回首页</button>
+  </view>
+</view>
