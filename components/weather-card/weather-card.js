@@ -1,4 +1,5 @@
 // components/weather-card/weathercard.js
+import Toast from '../../vant_weapp/components/dist/toast/toast';
 //获取应用实例
 const app = getApp()
 
@@ -26,6 +27,8 @@ Component({
     scrollLeft: 0,
     scrollUnit: 166,
     cardCur: 0,
+    onload: true, // 正在加载 
+    status: "天气数据加载中...", // 加载状态
     location: {
       city: "青岛市",
       area: "即墨区",
@@ -88,12 +91,17 @@ Component({
             })
             // console.log(forecast);
             _that.setData({
-              'location.weatherForecast': forecast
+              'location.weatherForecast': forecast,
+              onload: false
             })
             
           } else {
             Toast("天气出了点小问题");
             console.log("[ERROR]初始化天气失败", res)
+            _that.setData({
+              onload: true,
+              status: "天气数据加载失败!"
+            })
           }
         },
         fail: function (res) {
@@ -102,6 +110,10 @@ Component({
             icon: 'none'
           })
           console.log("[ERROR]网络请求失败")
+          _that.setData({
+            onload: true,
+            status: "天气数据加载失败!"
+          })
         }
       });
     },

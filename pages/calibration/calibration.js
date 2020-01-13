@@ -1,4 +1,7 @@
 // pages/calibration/calibration.js
+//获取应用实例
+import Toast from '../../vant_weapp/components/dist/toast/toast';
+
 Page({
 
   /**
@@ -6,6 +9,10 @@ Page({
    */
   data: {
     picker: ['4.00', '5.00', '6.00', '7.00', '8.00'],
+    aimNumber: -1, // 目标示数
+    choosed1: "",
+    choosed2: "",
+    choosed3: ""
   },
 
   /**
@@ -31,8 +38,17 @@ Page({
 
   /* 方法区 */
   startCalibration() {
+    if(this.data.aimNumber == -1) {
+      Toast("请选择目标示数进行校准!");
+    } else {
+      wx.navigateTo({
+        url: '../calibration_success/calibration_success',
+      })
+    }
+  },
+  endCalibration() {
     wx.navigateTo({
-      url: '../calibration_success/calibration_success',
+      url: '../device_list/device_list',  
     })
   },
   helpTap() {
@@ -43,6 +59,37 @@ Page({
     this.setData({
       index: e.detail.value
     })
+  },
+  chooseNumber(e) {
+    // console.log(e);
+    this.setData({
+      aimNumber: e.currentTarget.dataset.id
+    })
+    switch(e.currentTarget.dataset.id) {
+      case "4.00":
+        this.setData({
+          choosed1: "choosed",
+          choosed2: "",
+          choosed3: ""
+        })
+        break;
+      case "6.86":
+        this.setData({
+          choosed1: "",
+          choosed2: "choosed",
+          choosed3: ""
+        })
+        break;
+      case "9.18":
+        this.setData({
+          choosed1: "",
+          choosed2: "",
+          choosed3: "choosed"
+        })
+        break;
+      default: 
+        console.log(e.currentTarget.dataset.id);
+    }
   },
 
   /**

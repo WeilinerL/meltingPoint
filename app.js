@@ -67,9 +67,18 @@ App({
     if (this.autoLogin()) {
       console.log("[INFO]用户已登录");
       this.globalData.loggedIn = true;
-      wx.reLaunch({
-        url: 'pages/index/index',
-      })
+      let pages = getCurrentPages();
+      if(pages.length == 0) {
+        wx.reLaunch({
+          url: 'pages/index/index',
+        })
+      } else {
+        wx.navigateBack({
+
+        })
+      }
+    } else {
+      this.navigateToLogin();
     }
   },
   /* 获取用户登录信息 */

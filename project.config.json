@@ -92,6 +92,13 @@
 					"id": -1,
 					"name": "我的",
 					"pathName": "pages/personal_center/personal_center",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
 					"scene": null
 				}
 			]

@@ -1,17 +1,26 @@
-// components/my-fishpond.js
+// components/mp-title/mp-title.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    title: {
+    titleFront: {
       type: String,
-      value: '我的鱼塘'
+      value: "鱼塘"
+    },
+    titleLast: {
+      type: String,
+      value: "信息"
+    },
+    back: {
+      type: String,
+      value: null
     }
   },
   options: {
     addGlobalClass: true // ！important 不然父组件里面引用子组件，子组件样式失效
   },
+
   /**
    * 组件的初始数据
    */
@@ -23,6 +32,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    navigateBack() {
+      wx.navigateBack({
+        
+      })
+    }
   }
 })

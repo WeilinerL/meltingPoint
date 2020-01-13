@@ -12,6 +12,7 @@
   align-items: center;
   position: relative;
   background-color: #fff;
+  font-size: 36rpx;
 }
 
 .my-wrapper .head .img .head-portrait {
@@ -21,9 +22,18 @@
   border-radius: 100%;
 }
 
+.my-wrapper .head .user-info .nick-name {
+  margin-bottom: 10rpx;
+}
+
+.my-wrapper .head .user-tel {
+  letter-spacing: 3rpx;
+}
+
+/* 设置 */
 .my-wrapper .head .settings {
   position: absolute;
-  right: 26rpx;
+  right: 32rpx;
   font-size: 36rpx;
 }
 

@@ -4,6 +4,7 @@
 <view class="device-list-wrapper">
   <!-- 我的鱼塘 -->
   <my-fishpond></my-fishpond>
+  <mp-title titleFront="鱼塘 {{poolId}}" titleLast="" back="返回鱼塘列表"></mp-title>
   <view class="content">
     <view class="device-item animation-slide-bottom" wx:for="{{deviceList}}" wx:key="index">
       <view class="img margin-lr">
@@ -18,7 +19,7 @@
           <text>{{item.calibrationTime}}</text>
         </view>
       </view>
-      <button class="cu-btn mp-bg-blue calibration text-white" bindtap="navToCalibration">校准</button>
+      <button class="cu-btn mp-bg-blue calibration text-white" data bindtap="navToCalibration">校准</button>
     </view>
   </view>
 </view>

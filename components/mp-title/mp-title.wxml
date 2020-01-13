@@ -1,0 +1,12 @@
+<!--components/mp-title/mp-title.wxml-->
+<view class="mp-title-container bg-white">
+  <view class="text-center text-title text-bold padding padding-bottom-sm animation-slide-bottom">
+    <text style="padding: 0 6rpx 0 0;">{{titleFront}}</text>
+    <text class="mp-text-blue">{{titleLast}}</text>
+  </view> 
+  <view wx:if="{{back != null}}">
+    <view class="mp-text-blue text-center" bindtap="navigateBack" hover-class="mp-button-hover">
+      <text decode="{{true}}">&gt;&gt;{{back}}&lt;&lt;</text>
+    </view>
+  </view>
+</view>

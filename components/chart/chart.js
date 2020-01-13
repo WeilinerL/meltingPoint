@@ -5,7 +5,7 @@ import Toast from '../../vant_weapp/components/dist/toast/toast';
 //获取应用实例
 const app = getApp()
 
-function getOption(title, color, xData = ['2020-01-10 7:00', '2020-01-10 11:00', '2020-01-10 13:00', '2020-01-10 15:00', '2020-01-10 17:00', '2020-01-10 19:00', '2020-01-10 21:00'], yData = [120, 132, 101, 134, 90, 230, 210], interval = 0) {
+function getOption(title, color, xData = [], yData = [], interval = 0) {
   var option = {
     title: {
       text: title,
@@ -44,7 +44,7 @@ function getOption(title, color, xData = ['2020-01-10 7:00', '2020-01-10 11:00',
             var day = text1.split("-")[2];
             var hour = text2.split(":")[0];
             var min = text2.split(":")[1];
-            var time = year + "/" + month + "/" + day + " " + hour + ":" + min
+            var time = month + "/" + day + " " + hour + ":" + min
             if (index === 0) {
               time = null;
             }
@@ -145,7 +145,8 @@ Component({
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
-    show: function () {   
+    show: function () { 
+      this.updateEcharts(this.data.poolDatas); // 初始化池塘数据      
     },
   },
   /**
@@ -193,17 +194,28 @@ Component({
           salinity: 0.475576
       }
     ],
+    showDatas: [
+      {
+        pool_id: 1,
+        data_time: "2020-01-10 20:23:07",
+        ph: 2.28951,
+        dissolved_oxygen: 0.975885,
+        temperature: 45.2466,
+        salinity: 0.475576
+      }
+    ],
+    moreDataStatus: '没有更多了'
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    navToDeviceList() {
-      wx.navigateTo({
-        url: '../device_list/device_list',
-      })
-    },
+    // navToDeviceList() {
+    //   wx.navigateTo({
+    //     url: '../device_list/device_list',
+    //   })
+    // },
     /* 初始化鱼塘数据信息 */
     initPoolData() {
       console.log("[INFO]初始化池塘数据...");
@@ -225,7 +237,7 @@ Component({
           poolDatas: poolDatas
         });
         // 更新echarts
-        this.updateEcharts(poolDatas);
+        // this.updateEcharts(poolDatas);
         app.hideLoading();
       },
       fail => {
@@ -235,34 +247,40 @@ Component({
     },
     /* 更新数据信息 */
     updateData(startTime = 1, endTime = null) { // 默认查询前一天的
-      console.log("[INFO]初始化池塘数据...");
+      console.log("[INFO]更新池塘数据...");
       app.showLoading();
       let requestParam = null
       if(endTime) {
         requestParam = {
           'user_id': app.globalData.userInfo.userId,
           'pool_id': this.properties.poolId,
-          'start_time': parseInt(new Date().getTime() / 1000) - this.data.dayTimeUnit * startTime,
-          'end_time': parseInt(new Date().getTime() / 1000) - this.data.dayTimeUnit * endTime
+          'start_time': parseInt(new Date().getTime() / 1000) - timeUtil.transformTime(this.data.dayTimeUnit, startTime),
+          'end_time': parseInt(new Date().getTime() / 1000) - timeUtil.transformTime(this.data.dayTimeUnit, endTime)
         }
       } else {
         requestParam = {
           'user_id': app.globalData.userInfo.userId,
           'pool_id': this.properties.poolId,
-          'start_time': parseInt(new Date().getTime() / 1000) - this.data.dayTimeUnit * startTime,
+          'start_time': parseInt(new Date().getTime() / 1000) - timeUtil.transformTime(this.data.dayTimeUnit, startTime),
         }
       }
+      // console.log(requestParam);
       app.request("POST", "/pool_data", requestParam,
         // 请求成功
         data => {
           let poolDatas = data.datas;
           poolDatas = poolDatas.map(item => {
             item.data_time = timeUtil.formatTime(new Date(item.data_time * 1000));
+            item.temperature = item.temperature.toFixed(1);
+            item.ph = item.ph.toFixed(1);
+            item.dissolved_oxygen = item.dissolved_oxygen.toFixed(1);
+            item.salinity = item.salinity.toFixed(1);
             return item;
           })
           console.log(poolDatas);
           this.setData({
-            poolDatas: poolDatas
+            poolDatas: poolDatas,
+            showDatas: poolDatas.slice(0,50)
           });
           // 更新echarts
           this.updateEcharts(poolDatas);
@@ -273,6 +291,20 @@ Component({
           app.hideLoading();
 
         })
+    },
+    /* 查看更多数据 */
+    showMore() {
+      console.log(this.data.showDatas);
+      if (this.data.showDatas.length >= this.data.poolDatas.length) {
+        this.setData({
+          moreDataStatus: "没有更多了"
+        })
+      } else {
+        this.setData({
+          showDatas: this.data.poolDatas.slice(0, this.data.showDatas.length + 50)
+        });
+      }
+      
     },
     /* 更新echarts */
     updateEcharts(poolDatas) {

@@ -5,11 +5,16 @@
 <view class="my-wrapper">
   <view class="head padding animation-slide-bottom">
     <view class="img padding-right">
-      <image class="head-portrait"></image>
+      <view wx:if="{{userInfo.avatarUrl === ''}}">
+        <button class="head-portrait" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>
+      </view>
+      <view hover-class="mp-button-hover" wx:else>
+        <image class="head-portrait" src="{{userInfo.avatarUrl}}"></image>
+      </view>
     </view>
     <view class="user-info">
-      <view>海风千里岛</view>
-      <view class="text-gray text-sm">123456789</view>
+      <view class="nick-name">{{userInfo.nickName}}</view>
+      <view class="text-gray text-sm user-tel">{{userInfo.telNumber}}</view>
     </view>
     <view class="settings" hover-class="mp-button-hover">
       <text class="icon-settings text-gray"></text>
@@ -47,7 +52,7 @@
   </view>
   <!-- 校准设备 -->
   <view class="calibration" hover-class="button-hover">
-    <view class="func-item">
+    <view class="func-item" bindtap="calibrationMyDevice">
       <text class="icon-check padding-right-sm"></text>
       <text>校准我的设备</text>
     </view>

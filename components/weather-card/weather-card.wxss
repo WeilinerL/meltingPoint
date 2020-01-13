@@ -3,6 +3,13 @@
   padding: 0 6rpx 0 26rpx;
 }
 
+.weather-card-wrapper .load-data {
+  display: flex;
+  height: 236rpx;
+  align-items: center;
+  justify-content: center;
+}
+
 .weather-card-wrapper .weather-scroll-view .cu-item {
   height: 236rpx !important;
   width: 366rpx !important;

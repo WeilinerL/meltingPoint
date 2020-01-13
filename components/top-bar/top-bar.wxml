@@ -1,5 +1,5 @@
 <!--components/top-bar/top-bar.wxml-->
-<view class="cu-custom" style="height:{{CustomBar*1.0}}px; z-index: 1001;">
+<view class="cu-custom" style="height:{{CustomBar*1.0}}px; z-index: 100001;">
   <view class="cu-bar tabbar fixed" style="height:{{CustomBar*1.0}}px; padding-top:{{StatusBar}}px; {{isTransparent?'':'background-color: #fff;'}} width: 100%; padding-right: 0;">
     <navigator wx:if="{{hasBack}}" open-type="navigateBack" delta="1" hover-class="none" style='z-index: 1002; display: inline; vertical-align:middle; position: absolute;' class="margin-lr text-lg">
       <text class='icon-back mp-text-blue'>返回</text>

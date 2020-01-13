@@ -1,5 +1,7 @@
 // pages/personal_center/personal_center.js
 import Dialog from '../../vant_weapp/components/dist/dialog/dialog';
+//获取应用实例
+const app = getApp()
 
 Page({
 
@@ -7,14 +9,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    userInfo: {
+      nickName: '海风千里岛',
+      avatarUrl: '',
+      telNumber: ''
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let _that = this;
+    // 查看是否授权
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              // console.log(res.userInfo)
+              console.log("[INFO]微信用户已授权获取用户信息");
+              _that.setData({
+                'userInfo.nickName': res.userInfo.nickName,
+                'userInfo.avatarUrl': res.userInfo.avatarUrl
+              })
+            }
+          })
+        }
+      }
+    })
+    this.setData({
+      'userInfo.telNumber': app.globalData.userInfo.username
+    })
   },
 
   /**
@@ -45,6 +73,24 @@ Page({
     }).catch(() => {
       console.log('[INFO] 用户取消退出登录')
     });
+  },
+  bindGetUserInfo(e) {
+    // console.log(e.detail.userInfo)
+    if(e.detail.userInfo) {
+      this.setData({
+        'userInfo.nickName': e.detail.userInfo.nickName,
+        'userInfo.avatarUrl': e.detail.userInfo.avatarUrl
+      })
+      console.log("[INFO]微信用户已授权获取用户信息");
+    } else {
+      console.log("[INFO]微信用户拒绝授权获取用户信息");
+    }
+  },
+  /* 导航到鱼塘列表页面 */
+  calibrationMyDevice() {
+    wx.navigateTo({
+      url: '../choose_fishpool/choose_fishpool',
+    })
   },
 
   /**

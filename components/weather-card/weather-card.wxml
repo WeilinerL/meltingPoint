@@ -4,7 +4,7 @@
     <text class="city text-lg mp-text-blue">{{location.city}}</text>
     <text>{{location.area}}</text>
   </view>
-  <view class="weather-scroll-view">
+  <view class="weather-scroll-view" wx:if="{{!onload}}">
     <scroll-view scroll-x class="nav margin" scroll-left="{{scrollLeft}}" scroll-with-animation>
       <view class="cu-item {{index==TabCur?'mp-text-blue':''}} bg-white" wx:for="{{location.weatherForecast}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}" style="position: relative; overflow: hidden;">
         <view class="padding-lr text-black content">
@@ -23,4 +23,12 @@
       </view>
     </scroll-view>
   </view>
+  <view wx:else>
+    <view class="load-data bg-white text-center text-lg padding">
+      <view>{{status}}</view>
+    </view>
+  </view>
 </view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />

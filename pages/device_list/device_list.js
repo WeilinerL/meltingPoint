@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    poolId: -1,
     deviceList: [
       {
         imgSrc: "",
@@ -68,7 +69,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log(options);
+    this.setData({
+      poolId: options.pool_id
+    })
   },
 
   /**
@@ -86,7 +90,7 @@ Page({
   },
 
   /* 方法区 */
-  navToCalibration() {
+  navToCalibration(e) {
     wx.navigateTo({
       url: '../calibration/calibration',
     })

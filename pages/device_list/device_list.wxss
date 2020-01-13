@@ -4,6 +4,11 @@
   overflow: hidden
 }
 
+.device-list-wrapper .content {
+  /* margin-top: 4rpx; */
+  border-top: 1px solid #eee;
+}
+
 
 .device-list-wrapper .device-item {
   display: flex;
@@ -11,8 +16,9 @@
   justify-content: flex-start;
   padding: 16rpx;
   align-items: center;
-  border-top: 1px solid #eee;
+  /* border-top: 1px solid #eee; */
   border-bottom: 1px solid #eee;
+  background-color: #fff;
 }
 
 .device-list-wrapper .device-item .img {

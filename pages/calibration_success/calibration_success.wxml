@@ -4,7 +4,7 @@
 <!-- 校准成功 -->
 <view class="calibration-success-wrapper">
   <view class="content title-text text-center bg-white">
-    <text>校准成功</text>
+    <text>校准成功!</text>
   </view>
   <!-- 查看我的设备 -->
   <view class="padding-lr animation-scale-up">

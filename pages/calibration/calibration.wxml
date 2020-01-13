@@ -1,31 +1,48 @@
 <!--pages/calibration/calibration.wxml-->
 <!-- 自定义导航栏 -->
 <top-bar hasBack="true" navigationBarTitleText="校准设备"></top-bar>
-<view class="calibration-wrapper">
-  <view class="calibration-type">
-    <image class="margin" src=""></image>
-    <view>
+<view class="calibration-wrapper bg-white">
+  <view class="calibration-typep padding">
+    <!-- <image class="margin" src=""></image> -->
+    <view class="text-lg">
       <text class="mp-text-blue">校准</text>
-      <text>pH电极</text>
+      <text decode="{{true}}">&emsp;pH电极</text>
     </view>
   </view>
   <view class="calibration-item padding-lr">
     <text class="title">电极示数</text>
-    <text class="mp-text-blue">8.00</text>
+    <text class="mp-text-blue text-xxl">8.00</text>
   </view>
   <view class="calibration-item padding-lr">
     <view class="title">目标示数</view>
-    <picker class="mp-text-blue shadow-lg" bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+    <!-- <picker class="mp-text-blue shadow-lg" bindchange="PickerChange" value="{{index}}" range="{{picker}}">
       <view class="picker">
         {{index?picker[index]: '6.00'}}
         <text class="icon-unfold icon"></text>
       </view>
-    </picker>
+    </picker> -->
+    <view class="aim-number">
+      <button class="cu-btn {{choosed1}}" bindtap="chooseNumber" data-id="4.00">4.00</button>
+      <button class="cu-btn {{choosed2}}" bindtap="chooseNumber" data-id="6.86">6.86</button>
+      <button class="cu-btn {{choosed3}}" bindtap="chooseNumber" data-id="9.18">9.18</button>
+    </view>
   </view>
-  <view class="padding">
-    <button class="mp-bg-blue lg calibration text-white margin-tb start-calibration" hover-class="mp-button-hover" bindtap="startCalibration">开始校准</button>
-  <view class="text-center mp-text-blue help" hover-class="button-hover">
-    <text bindtap="helpTap" >校准方法</text>
-  </view>
+  <view class="padding" style="background-color: #f6f6f6;">
+    <button class="mp-bg-blue lg calibration text-white margin-tb start-calibration" hover-class="mp-button-hover" bindtap="startCalibration">点击进行校准</button>
+    <!-- <view class="text-center mp-text-blue help" hover-class="button-hover">
+      <text bindtap="helpTap" >校准方法</text>
+    </view> -->
+    <button class="bg-red lg calibration text-white margin-tb end-calibration" hover-class="mp-button-hover" bindtap="endCalibration">退出校准</button>
   </view>  
+  <view class="calibration-methods padding">
+    <view class="margin">
+      <text>校准方法</text>
+    </view>
+    <view class="margin">
+      <text>**此处更具不同电极插入不同校准方法及图片</text>
+    </view>
+  </view>
 </view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />

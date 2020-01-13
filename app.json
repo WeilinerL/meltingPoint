@@ -6,7 +6,8 @@
     "pages/data_collection/data_collection",
     "pages/device_list/device_list",
     "pages/calibration/calibration",
-    "pages/calibration_success/calibration_success"
+    "pages/calibration_success/calibration_success",
+    "pages/choose_fishpool/choose_fishpool"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",
@@ -41,7 +42,9 @@
     "top-bar": "/components/top-bar/top-bar",
     "weather-card": "/components/weather-card/weather-card",
     "chart": "/components/chart/chart",
-    "empty-data": "/components/empty-data/empty-data"
+    "empty-data": "/components/empty-data/empty-data",
+    "fishpond-info": "/components/fishpond-info/fishpond-info",
+    "mp-title": "/components/mp-title/mp-title"
   },
   "sitemapLocation": "sitemap.json"
 }
