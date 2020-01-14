@@ -19,7 +19,10 @@
           <text>{{item.calibrationTime}}</text>
         </view>
       </view>
-      <button class="cu-btn mp-bg-blue calibration text-white" data bindtap="navToCalibration">校准</button>
+      <button class="cu-btn mp-bg-blue calibration text-white" data-device-type="{{item.deviceName}}" bindtap="navToCalibration">校准</button>
     </view>
   </view>
 </view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />

@@ -1,0 +1,36 @@
+/* pages/add_newfishpool/add_newfishpool.wxss */
+
+.add-newfishpond-wrapper .title {
+  width: 90%;
+  margin: 0 auto;
+  padding: 30rpx 0;
+}
+
+.add-newfishpond-wrapper .form-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-newfishpond-wrapper .form-content .form-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid gainsboro;
+  border-bottom: none;
+  height: 106rpx;
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.add-newfishpond-wrapper .form-content .form-item .input-item {
+  width: 66%;
+}
+
+.add-newfishpond-wrapper .form-content .form-item .label {
+  margin: 0 30rpx;
+}
+
+.add-newfishpond-wrapper .form-content .form-item .phcolor {
+  color: #aaa;
+}

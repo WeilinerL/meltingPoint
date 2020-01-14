@@ -1,0 +1,52 @@
+<!--pages/add_newfishpool/add_newfishpool.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar hasBack="true" navigationBarTitleText="添加新的鱼塘"></top-bar>
+<view class="add-newfishpond-wrapper">
+  <view class="basic-info">
+    <view class="title text-bold text-gray">
+      <text>基本资料</text>
+    </view>
+    <view class="form-content">
+      <view class="form-item">
+        <view class="label">
+          <text>鱼塘名称</text>
+        </view>
+        <view class="input-item">
+          <input placeholder="输入鱼塘名称" placeholder-class="phcolor"></input>
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="label">
+          <text>手机号码</text>
+        </view>
+        <view class="input-item">
+          <input placeholder="输入手机号码" placeholder-class="phcolor"></input>
+        </view>
+      </view>
+      <view class="form-item">
+        <view class="label">
+          <text>所在区域</text>
+        </view>
+        <view class="input-item">
+          <input placeholder="输入所在区域" placeholder-class="phcolor"></input>
+        </view>
+      </view>
+      <view class="form-item" style="border-bottom: 1px solid gainsboro;">
+        <view class="label">
+          <text>详细地址</text>
+        </view>
+        <view class="input-item">
+          <input placeholder="输入详细地址" placeholder-class="phcolor"></input>
+        </view>
+      </view>
+    </view>
+  </view>
+  <pic-upload></pic-upload>
+  <view class="button-confirm padding">
+    <button class="cu-btn mp-bg-blue text-white mp-radius mp-button height">确认</button>
+  </view>
+</view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />
+

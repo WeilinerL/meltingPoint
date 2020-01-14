@@ -1,0 +1,34 @@
+<!--pages/feedback/feedback.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar hasBack="true" navigationBarTitleText="意见反馈"></top-bar>
+<view class="feedback-wrapper margin-bottom-xl padding-bottom-xl">
+  <view class="type-picker margin bg-white">
+    <picker class="" bindchange="PickerChange" bindtap="openPicker" bindcancel="closePicker" value="{{index}}" range="{{picker}}">
+      <view class="title">
+        <text style="color: {{pickerStatus == 'animation-rotate' ? '#aaa' : ''}};">{{value == '' ? '选择反馈类型' : picker[index]}}</text>
+        <view class="{{pickerStatus}}">
+          <text class="text-gray icon-right"></text>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="input-box padding bg-white">
+    <textarea placeholder="请输入反馈信息" bindinput="inputText" maxlength="300"></textarea>
+    <view class="counter">
+      <text>已输入</text>
+      <text style="display: inline-block; width: 39rpx; text-align: right;">{{inputLength}}</text>
+      <text>/300</text>
+    </view>
+  </view>
+  <view class="contact-way margin bg-white">
+    <input placeholder="手机/邮箱/QQ(选填)"></input>
+  </view>
+  <pic-upload title="上传图片(最多6张)" number="6"></pic-upload>
+  <view class="button-confirm">
+    <button class="cu-btn mp-bg-blue text-white mp-radius-sm mp-button height">提交</button>
+  </view>
+</view>
+
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />

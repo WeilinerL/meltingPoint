@@ -1,0 +1,73 @@
+/* components/pic-upload/pic-upload.wxss */
+/* 添加图片 */
+.mp-button-hover {
+  transform: translate(2rpx,2rpx);
+}
+
+.mp-bg-bg {
+  background-color: #f6f6f6;
+}
+
+.mp-radius-full {
+  border-radius: 100%;
+}
+
+.animation-slid-bottom {
+  animation: slide-bottom 1s forwards;
+}
+
+@keyframes slide-bottom {
+  0% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pic-upload-wrapper .title {
+  width: 90%;
+  margin: 0 auto;
+  padding: 30rpx 0;
+}
+
+.pic-upload-wrapper .add-picture .add-pic {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.pic-upload-wrapper .add-picture .add-pic > view {
+  display: inline-block;
+  position: relative;
+  width: 30vw;
+  height: 30vw;
+  /* line-height: 196rpx; */
+  text-align: center;
+  border: 1px solid gainsboro;
+  font-weight: bolder;
+  font-size: 66rpx;
+  overflow: hidden;
+  color: #aaa;
+}
+
+.pic-upload-wrapper .add-picture .add-pic > view > image {
+  width: 30vw;
+  height: 30vw;
+  vertical-align: middle;
+}
+
+/* 删除图片 */
+.pic-upload-wrapper .add-picture .add-pic > view .delete-pic {
+  top: 0rpx;
+  right: 0rpx;
+  width: 50rpx;
+  height: 50rpx;
+  z-index: 999;
+  background-color: #888;
+}

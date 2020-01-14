@@ -1,0 +1,66 @@
+/* pages/add_newdevice/add_newdevice.wxss */
+
+.add-new-device-wrapper .avatarUrl {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-new-device-wrapper .head-portrait {
+  width: 30vw;
+  height: 30vw;
+  margin: 56rpx;
+  background-color: gainsboro;
+}
+
+.add-new-device-wrapper .form-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 12vh;
+}
+
+.add-new-device-wrapper .form-content .form-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid gainsboro;
+  border-bottom: none;
+  height: 106rpx;
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.add-new-device-wrapper .form-content .form-item.auto-input {
+  position: relative;
+  width: 90%;
+  margin: 0 auto 9vh;
+}
+
+.add-new-device-wrapper .form-content .form-item.auto-input .label {
+  width: 20%;
+}
+
+.add-new-device-wrapper .form-content .form-item.auto-input .pool-id {
+  position: absolute;
+  right: 10%;
+}
+ 
+.add-new-device-wrapper .form-content .form-item .label {
+  margin: 0 30rpx;
+  color: #aaa;
+}
+
+.add-new-device-wrapper .form-content .form-item .input-item {
+  width: 80%;
+}
+
+.add-new-device-wrapper .form-content .form-item .phcolor {
+  color: #aaa;
+}
+
+.add-new-device-wrapper .button-confirm {
+  width: 90%;
+  margin: 30rpx auto;
+}

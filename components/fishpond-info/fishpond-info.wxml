@@ -1,7 +1,10 @@
 <!--components/fishpond-info/fishpond-info.wxml-->
 <view class="fishpond-info-container">
-  <view class="device-list" wx:if="{{pools.length != 0}}">
-    <view class="margin-bottom-sm animation-slide-bottom" wx:for="{{pools}}" wx:key="index" id="{{item.pool_id}}" data-pool-id="{{item.pool_id}}" bindtap="seeFishpondDetail">
+  <view class="bg-white padding animation-slide-bottom" style="margin-bottom: 6rpx;" wx:if="{{routeType != 'pool_data'}}">
+    <button class="cu-btn mp-button mp-bg-blue text-white" bindtap="addNewFishpond">添加新的鱼塘</button>
+  </view>
+  <view class="device-list margin-bottom-sm" wx:if="{{pools.length != 0}}">
+    <view class="animation-slide-bottom" wx:for="{{pools}}" wx:key="index" id="{{item.pool_id}}" data-pool-id="{{item.pool_id}}" data-serial-id="{{item.serial_id}}"  bindtap="seeFishpondDetail">
       <!-- 设置点击动画 -->
       <!-- <wxs module="tap">
         var tap = function(translate, id) {
@@ -15,24 +18,38 @@
         module.exports.tap = tap;
       </wxs> -->
       <view class="device-item" hover-class="button-hover">
-        <view class="fishpond-pic margin">
-          <image src="{{item.fishpondPic}}"></image>
+        <view class="pool-info">
+          <view class="fishpond-pic margin">
+            <image src="{{item.fishpondPic}}"></image>
+          </view>
+          <view class="fishpond-info">
+            <view class="fishpond-name mp-text-blue">
+              <text decode="{{true}}">鱼塘: &emsp;{{item.pool_id}}</text>
+            </view>
+            <view class="fishpond-address">
+              <text decode="{{true}}">地址: &nbsp;{{item.pool_name}}</text>
+            </view>
+            <!-- <view class="device-num">
+              <text decode="{{true}}">编号: &nbsp;{{item.serial_id}}</text>
+            </view> -->
+            <view class="device-num">
+              <text decode="{{true}}">设备数量: &nbsp;3</text>
+            </view>
+            <view class="detail text-red" wx:if="{{routeType != 'pool_data'}}">
+              <!-- <text class="padding-right-sm icon-info"></text> -->
+              <text>校准本鱼塘设备</text>
+            </view>
+          </view>
         </view>
-        <view class="fishpond-info">
-          <view class="fishpond-name mp-text-blue">
-            <text decode="{{true}}">鱼塘: &emsp;{{item.pool_id}}</text>
-          </view>
-          <view class="fishpond-address">
-            <text decode="{{true}}">地址: &nbsp;{{item.pool_name}}</text>
-          </view>
-          <view class="device-num">
-            <text decode="{{true}}">编号: &nbsp;{{item.serial_id}}</text>
-          </view>
-          <view class="detail text-red" wx:if="{{routeType != 'pool_data'}}">
-            <!-- <text class="padding-right-sm icon-info"></text> -->
-            <text>校准本鱼塘设备</text>
-          </view>
-        </view>
+      </view>
+
+    </view>
+    <view class="buttons bg-white text-center animation-slide-bottom" wx:if="{{routeType != 'pool_data'}}">
+      <view class="padding-sm">
+        <button class="cu-btn mp-bg-blue text-white">修改鱼塘信息</button>
+      </view>
+      <view class="padding-sm">
+        <button class="cu-btn bg-red">添加新设备</button>          
       </view>
     </view>
   </view>

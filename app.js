@@ -44,9 +44,10 @@ App({
         this.globalData.systemInfo.system = e.system;
       }
     });
+    this.checkLocalUserInfo();
   },
   onShow: function() {
-    this.checkLocalUserInfo();
+
   },
   /* 是否登录 */
   isLoggedIn() {

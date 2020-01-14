@@ -4,16 +4,16 @@
 <view class="calibration-wrapper bg-white">
   <view class="calibration-typep padding">
     <!-- <image class="margin" src=""></image> -->
-    <view class="text-lg">
+    <view class="text-lg  animation-slide-bottom">
       <text class="mp-text-blue">校准</text>
-      <text decode="{{true}}">&emsp;pH电极</text>
+      <text decode="{{true}}">&emsp;{{deviceName}}</text>
     </view>
   </view>
-  <view class="calibration-item padding-lr">
+  <view class="calibration-item padding-lr animation-slide-bottom">
     <text class="title">电极示数</text>
     <text class="mp-text-blue text-xxl">8.00</text>
   </view>
-  <view class="calibration-item padding-lr">
+  <view class="calibration-item padding-lr animation-slide-bottom">
     <view class="title">目标示数</view>
     <!-- <picker class="mp-text-blue shadow-lg" bindchange="PickerChange" value="{{index}}" range="{{picker}}">
       <view class="picker">
@@ -27,7 +27,7 @@
       <button class="cu-btn {{choosed3}}" bindtap="chooseNumber" data-id="9.18">9.18</button>
     </view>
   </view>
-  <view class="padding" style="background-color: #f6f6f6;">
+  <view class="padding animation-scale-up" style="background-color: #f6f6f6;">
     <button class="mp-bg-blue lg calibration text-white margin-tb start-calibration" hover-class="mp-button-hover" bindtap="startCalibration">点击进行校准</button>
     <!-- <view class="text-center mp-text-blue help" hover-class="button-hover">
       <text bindtap="helpTap" >校准方法</text>
@@ -39,7 +39,7 @@
       <text>校准方法</text>
     </view>
     <view class="margin">
-      <text>**此处更具不同电极插入不同校准方法及图片</text>
+      <text>**此处根据不同电极插入不同校准方法及图片</text>
     </view>
   </view>
 </view>

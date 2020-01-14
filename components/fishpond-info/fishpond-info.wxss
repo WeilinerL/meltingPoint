@@ -14,12 +14,31 @@
   background-color: azure;
 }
 
-.fishpond-info-container .device-list .device-item {
+.fishpond-info-container .device-list .device-item .pool-info {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   background-color: #fff;
+}
+
+.fishpond-info-container .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.fishpond-info-container button {
+  height: 100rpx;
+}
+
+.fishpond-info-container .buttons > view {
+  padding-top: 0;
+  width: 50%;
+}
+
+.fishpond-info-container .buttons > view > button {
+  width: 100%;
 }
 
 .fishpond-info-container .device-list .device-item .fishpond-info {

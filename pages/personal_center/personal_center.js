@@ -86,6 +86,12 @@ Page({
       console.log("[INFO]微信用户拒绝授权获取用户信息");
     }
   },
+  /* 导航到意见反馈页面 */
+  navigateToFeedback() {
+    wx.navigateTo({
+      url: '../feedback/feedback',
+    })
+  },
   /* 导航到鱼塘列表页面 */
   calibrationMyDevice() {
     wx.navigateTo({

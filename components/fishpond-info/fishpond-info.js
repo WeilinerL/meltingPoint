@@ -49,6 +49,7 @@ Component({
     seeFishpondDetail(e) {
       // console.log(e);
       var poolId = e.currentTarget.dataset.poolId;
+      var serialId = e.currentTarget.dataset.serialId;
       if(this.properties.routeType == "pool_data") {
         // 导航到数据统计
         wx.navigateTo({
@@ -57,7 +58,7 @@ Component({
       } else if (this.properties.routeType == "pool_device") {
         // 导航到设备列表
         wx.navigateTo({
-          url: '../device_list/device_list?pool_id=' + poolId,
+          url: '../device_list/device_list?pool_id=' + poolId + "&serial_id=" + serialId,
         })
       }
       
@@ -76,6 +77,12 @@ Component({
         fail => {
           Toast("获取鱼塘信息失败!");
         })
+    },
+    addNewFishpond(e) {
+      // console.log(e);
+      wx.navigateTo({
+        url: '../add_newfishpool/add_newfishpool',
+      })
     }
   }
 })

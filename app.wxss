@@ -11,8 +11,10 @@ page {
   /* css 变量声明 */
   --Blue: #308bb1;
   --Gray: gainsboro; 
+  --BG: #f6f6f6;
 }
 
+/* 颜色 */
 .mp-text-blue {
   color: var(--Blue); 
 }
@@ -21,6 +23,11 @@ page {
   color: var(--Gray); 
 }
 
+.mp-text-bg {
+  color: var(--BG); 
+}
+
+/* 背景 */
 .mp-bg-blue {
   background-color: var(--Blue); 
 }
@@ -29,14 +36,49 @@ page {
   background-color: var(--Gray); 
 }
 
+.mp-bg-bg {
+  color: var(--Bg); 
+}
+
+/* 按钮 */
 .mp-button-hover {
   transform: translate(2rpx,2rpx);
 }
 
-.mp-border-blue {
-  border: 1px solid var(--Blue)
-}
-
 .mp-button {
   width: 100%;
+}
+
+.mp-button[class*="height-sm"] {
+  height: 60rpx;
+}
+
+.mp-button[class*="height"] {
+  height: 90rpx;
+}
+
+.mp-button[class*="height-lg"] {
+  height: 120rpx;
+}
+
+.mp-button[class*="height-xl"] {
+  height: 150rpx;
+}
+
+/* 弧度 */
+.mp-radius-sm {
+  border-radius: 20rpx;
+}
+
+.mp-radius {
+  border-radius: 50rpx;
+}
+
+.mp-radius-full {
+  border-radius: 100%;
+}
+
+/* border */
+.mp-border-blue {
+  border: 1px solid var(--Blue)
 }

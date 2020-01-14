@@ -1,6 +1,7 @@
 // pages/calibration/calibration.js
 //获取应用实例
 import Toast from '../../vant_weapp/components/dist/toast/toast';
+const app = getApp();
 
 Page({
 
@@ -8,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    deviceName: '--',
     picker: ['4.00', '5.00', '6.00', '7.00', '8.00'],
     aimNumber: -1, // 目标示数
     choosed1: "",
@@ -19,7 +21,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log(options);
+    this.setData({
+      deviceName: options.device_type
+    })
+    switch (options.device_type) {
+      case "pH探头":
+        this.setData({
+          aimNumber: 4.00,
+          choosed1: "choosed",
+          choosed2: "",
+          choosed3: ""
+        })
+        break;
+      case "溶解氧探头":
+        this.setData({
+          aimNumber: 6.86,
+          choosed1: "",
+          choosed2: "choosed",
+          choosed3: ""
+        })
+        break;
+      case "盐度探头":
+        this.setData({
+          aimNumber: 9.18,
+          choosed1: "",
+          choosed2: "",
+          choosed3: "choosed"
+        })
+        break;
+      default:
+        console.log("[ERROR]非法进入校准页面!");
+    }
   },
 
   /**
@@ -47,7 +80,7 @@ Page({
     }
   },
   endCalibration() {
-    wx.navigateTo({
+    wx.navigateBack({
       url: '../device_list/device_list',  
     })
   },
@@ -61,7 +94,7 @@ Page({
     })
   },
   chooseNumber(e) {
-    // console.log(e);
+    console.log(e);
     this.setData({
       aimNumber: e.currentTarget.dataset.id
     })

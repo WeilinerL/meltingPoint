@@ -1,4 +1,8 @@
 // pages/device_list/device_list.js
+//获取应用实例
+import Toast from '../../vant_weapp/components/dist/toast/toast';
+const app = getApp();
+
 Page({
 
   /**
@@ -6,61 +10,23 @@ Page({
    */
   data: {
     poolId: -1,
+    serialId: -1,
+    status: "fail",
     deviceList: [
       {
         imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
+        deviceName: "pH探头",
+        calibrationTime: "--"
       },
       {
         imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
+        deviceName: "溶解氧探头",
+        calibrationTime: "--"
       },
       {
         imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
-      },
-      {
-        imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
-      },
-      {
-        imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
-      },
-      {
-        imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
-      },
-      {
-        imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
-      },
-      {
-        imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
-      },
-      {
-        imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
-      },
-      {
-        imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
-      },
-      {
-        imgSrc: "",
-        deviceName: "温度探头",
-        calibrationTime: "2019.8.6"
+        deviceName: "盐度探头",
+        calibrationTime: "--"
       }
     ]
   },
@@ -71,8 +37,10 @@ Page({
   onLoad: function (options) {
     // console.log(options);
     this.setData({
-      poolId: options.pool_id
+      poolId: options.pool_id,
+      serialId: options.serial_id
     })
+    this.initDevice();
   },
 
   /**
@@ -90,10 +58,55 @@ Page({
   },
 
   /* 方法区 */
-  navToCalibration(e) {
-    wx.navigateTo({
-      url: '../calibration/calibration',
+  initDevice() {
+    let _that = this;
+    app.showLoading("设备数据加载中...");
+    app.request("POST", "/device_info", {
+      user_id: app.globalData.userInfo.userId,
+      serial_id: this.data.serialId
+    },
+    successData => {
+      console.log("[INFO]获取设备数据:", successData);
+      _that.setData({
+        status: "success",
+        deviceList: [
+          {
+            imgSrc: "",
+            deviceName: "pH探头",
+            calibrationTime: successData.ph_time == null ? '未校准' : successData.ph_time
+          },
+          {
+            imgSrc: "",
+            deviceName: "溶解氧探头",
+            calibrationTime: successData.dissolved_time == null ? '未校准' : successData.dissolved_time
+          },
+          {
+            imgSrc: "",
+            deviceName: "盐度探头",
+            calibrationTime: successData.temperature_time == null ? '未校准' : successData.temperature_time
+          }
+        ]
+      })
+      app.hideLoading();
+    },
+    failData => {
+      Toast("设备数据加载失败!请稍后重试");
+      _that.setData({
+        status: "fail"
+      })
+      console.log("[ERROR]设备数据加载失败!");
     })
+  },
+  /* 导航到校准页面 */
+  navToCalibration(e) {
+    // console.log(e);
+    if (this.data.status == "success") {
+      wx.navigateTo({
+        url: '../calibration/calibration?device_type=' + e.currentTarget.dataset.deviceType,
+      })
+    } else {
+      Toast("设备未连接!");
+    }
   },
 
   /**

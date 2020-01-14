@@ -27,7 +27,7 @@
 		"bundle": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
+	"libVersion": "2.10.0",
 	"appid": "wx957446b5778dbd88",
 	"projectname": "melting_point",
 	"debugOptions": {
@@ -99,6 +99,35 @@
 					"id": -1,
 					"name": "登录",
 					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加新的鱼塘",
+					"pathName": "pages/add_newfishpool/add_newfishpool",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择鱼塘",
+					"pathName": "pages/choose_fishpool/choose_fishpool",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加新设备",
+					"pathName": "pages/add_newdevice/add_newdevice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "意见反馈",
+					"pathName": "pages/feedback/feedback",
+					"query": "",
 					"scene": null
 				}
 			]

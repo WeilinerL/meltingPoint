@@ -1,0 +1,26 @@
+<!--components/pic-upload/pic-upload.wxml-->
+<view class="pic-upload-wrapper">
+  <view class="add-picture">
+    <view class="title text-bold text-gray">
+      <text>{{title}}</text>
+    </view>
+    <view class="add-pic">
+      <view class="mp-bg-bg animation-slid-bottom" wx:for="{{pictureData}}" wx:key="index">
+        <view class="mp-radius-full">
+          <view class="delete-pic cu-tag badge" style="border-radius: 0 0 0 20rpx; font-size: 36rpx;" data-index="{{index}}" bindtap="deletePic">
+            <text class="icon-close"></text>
+          </view>
+        </view>
+        <image src="{{item}}" data-url="{{item}}" bindtap="previewImage"></image>
+      </view>
+      <view class="add-button mp-bg-bg" hover-class="mp-button-hover" style="line-height: 30vw;" bindtap="addPicture">
+        <text class="icon-add"></text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />
+
+

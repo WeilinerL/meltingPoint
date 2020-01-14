@@ -31,7 +31,7 @@
         <text class="icon-right padding"></text>
       </view>
     </view>
-    <view class="feedback" hover-class="button-hover">
+    <view class="feedback" hover-class="button-hover" bindtap="navigateToFeedback">
       <view class="func-item">
         <text class="icon-edit padding-right-sm"></text>
         <text>意见反馈</text>
@@ -51,8 +51,8 @@
     </view>
   </view>
   <!-- 校准设备 -->
-  <view class="calibration" hover-class="button-hover">
-    <view class="func-item" bindtap="calibrationMyDevice">
+  <view class="calibration" hover-class="button-hover" bindtap="calibrationMyDevice">
+    <view class="func-item">
       <text class="icon-check padding-right-sm"></text>
       <text>校准我的设备</text>
     </view>

@@ -1,0 +1,42 @@
+<!--pages/add_newdevice/add_newdevice.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar hasBack="true" navigationBarTitleText="添加新的设备"></top-bar>
+<view class="add-new-device-wrapper">
+  <view class="avatarUrl" hover-class="mp-button-hover">
+    <image class="head-portrait mp-radius-full" src="{{userInfo.avatarUrl}}"></image>
+  </view>
+  <view class="form-content">
+    <view class="form-item auto-input">
+      <view class="label">
+        <text>所在鱼塘</text>
+      </view>
+      <view class="pool-id mp-text-blue">
+        <text>鱼塘-{{fishpoolId}}</text>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">
+        <text class="icon-mobile"></text>
+      </view>
+      <view class="input-item">
+        <input placeholder="请输入您账号的手机号" placeholder-class="phcolor"></input>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="label">
+        <text class="icon-barcode"></text>
+      </view>
+      <view class="input-item">
+        <input placeholder="请输入设备序列号" placeholder-class="phcolor"></input>
+      </view>
+    </view>
+  </view>
+  <view class="button-confirm">
+    <button class="cu-btn mp-bg-blue text-white mp-radius-sm mp-button height">注册</button>
+  </view>
+
+</view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />

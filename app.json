@@ -7,7 +7,10 @@
     "pages/device_list/device_list",
     "pages/calibration/calibration",
     "pages/calibration_success/calibration_success",
-    "pages/choose_fishpool/choose_fishpool"
+    "pages/choose_fishpool/choose_fishpool",
+    "pages/add_newfishpool/add_newfishpool",
+    "pages/add_newdevice/add_newdevice",
+    "pages/feedback/feedback"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",
@@ -44,7 +47,8 @@
     "chart": "/components/chart/chart",
     "empty-data": "/components/empty-data/empty-data",
     "fishpond-info": "/components/fishpond-info/fishpond-info",
-    "mp-title": "/components/mp-title/mp-title"
+    "mp-title": "/components/mp-title/mp-title",
+    "pic-upload": "/components/pic-upload/pic-upload"
   },
   "sitemapLocation": "sitemap.json"
 }
