@@ -61,16 +61,16 @@
 
   <view>
     <view class="echarts margin-tb">
-      <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecTemperature }}"></ec-canvas>
+      <ec-canvas id="mychart-dom-line1" canvas-id="mychart-line1" ec="{{ ecTemperature }}"></ec-canvas>
     </view>
     <view class="echarts margin-tb">
-      <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecPH }}"></ec-canvas>
+      <ec-canvas id="mychart-dom-line2" canvas-id="mychart-line2" ec="{{ ecPH }}"></ec-canvas>
     </view>
     <view class="echarts margin-tb">
-      <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecO2 }}"></ec-canvas>
+      <ec-canvas id="mychart-dom-line3" canvas-id="mychart-line3" ec="{{ ecO2 }}"></ec-canvas>
     </view>
     <view class="echarts margin-tb">
-      <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ecSalinity }}"></ec-canvas>
+      <ec-canvas id="mychart-dom-line4" canvas-id="mychart-line4" ec="{{ ecSalinity }}"></ec-canvas>
     </view>
   </view>
 </view>

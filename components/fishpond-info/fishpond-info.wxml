@@ -4,7 +4,7 @@
     <button class="cu-btn mp-button mp-bg-blue text-white" bindtap="addNewFishpond">添加新的鱼塘</button>
   </view>
   <view class="device-list margin-bottom-sm" wx:if="{{pools.length != 0}}">
-    <view class="animation-slide-bottom" wx:for="{{pools}}" wx:key="index" id="{{item.pool_id}}" data-pool-id="{{item.pool_id}}" data-serial-id="{{item.serial_id}}"  bindtap="seeFishpondDetail">
+    <view class="animation-slide-bottom margin-bottom-sm" wx:for="{{pools}}" wx:key="index">
       <!-- 设置点击动画 -->
       <!-- <wxs module="tap">
         var tap = function(translate, id) {
@@ -17,7 +17,7 @@
         }
         module.exports.tap = tap;
       </wxs> -->
-      <view class="device-item" hover-class="button-hover">
+      <view class="device-item" id="{{item.pool_id}}" data-pool-id="{{item.pool_id}}" data-serial-id="{{item.serial_id}}" hover-class="button-hover" bindtap="seeFishpondDetail">
         <view class="pool-info">
           <view class="fishpond-pic margin">
             <image src="{{item.fishpondPic}}"></image>
@@ -42,18 +42,23 @@
           </view>
         </view>
       </view>
+      <view class="buttons bg-white text-center animation-slide-bottom" wx:if="{{routeType != 'pool_data'}}">
+        <view class="padding-sm">
+          <button class="cu-btn mp-bg-blue text-white">修改鱼塘信息</button>
+        </view>
+        <view class="padding-sm" bindtap="navigateToAddND">
+          <button class="cu-btn bg-red">添加新设备</button>          
+        </view>
+      </view>
 
     </view>
-    <view class="buttons bg-white text-center animation-slide-bottom" wx:if="{{routeType != 'pool_data'}}">
-      <view class="padding-sm">
-        <button class="cu-btn mp-bg-blue text-white">修改鱼塘信息</button>
-      </view>
-      <view class="padding-sm">
-        <button class="cu-btn bg-red">添加新设备</button>          
-      </view>
-    </view>
+    
   </view>
   <view wx:else>
     <empty-data></empty-data>
   </view>
 </view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />
+

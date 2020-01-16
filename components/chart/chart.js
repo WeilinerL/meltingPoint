@@ -137,16 +137,16 @@ function initChartSalinity(canvas, width, height) {
 Component({
   lifetimes: {
     attached() {
-
+           
     },
-    ready() {
-      this.initPoolData(); // 初始化池塘数据      
+    ready() { 
+      this.updateData(); // 更新数据并且更新echarts 
     }
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
     show: function () { 
-      this.updateEcharts(this.data.poolDatas); // 初始化池塘数据      
+      this.initPoolData(); // 初始化池塘数据
     },
   },
   /**
@@ -234,8 +234,9 @@ Component({
         })
         console.log(poolDatas);
         this.setData({
-          poolDatas: poolDatas
-        });
+          poolDatas: poolDatas,
+          showDatas: poolDatas.slice(0, 50)
+        });      
         // 更新echarts
         // this.updateEcharts(poolDatas);
         app.hideLoading();
@@ -282,9 +283,10 @@ Component({
             poolDatas: poolDatas,
             showDatas: poolDatas.slice(0,50)
           });
+          app.hideLoading();
           // 更新echarts
           this.updateEcharts(poolDatas);
-          app.hideLoading();
+          
         },
         fail => {
           Toast("获取数据失败!");
@@ -329,10 +331,20 @@ Component({
         return item.salinity;
       })
       // 更新 
-      chartTemperature.setOption(getOption("温度", '#0081ff', times, temperatures, 5));
-      chartPH.setOption(getOption("pH", '#f37b1d', times, phs, 5));
-      chartO2.setOption(getOption("溶解氧", '#39b54a', times, dissolvedOxygens, 5));
-      chartSalinity.setOption(getOption("盐度", '#8799a3', times, salinitys, 5));
+      try {
+        setTimeout(() => {
+          let interval = parseInt(poolDatas.length / 10);
+
+          chartTemperature.setOption(getOption("温度", '#0081ff', times, temperatures, interval));
+          chartPH.setOption(getOption("pH", '#f37b1d', times, phs, interval));
+          chartO2.setOption(getOption("溶解氧", '#39b54a', times, dissolvedOxygens, interval));
+          chartSalinity.setOption(getOption("盐度", '#8799a3', times, salinitys, interval));
+        }, 500)
+      }
+      catch(e) {
+        console.log(e);
+      }
+      
     }
   }
 })

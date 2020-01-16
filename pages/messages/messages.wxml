@@ -1,0 +1,25 @@
+<!--pages/messages/messages.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar hasBack="true" navigationBarTitleText="我的消息"></top-bar>
+
+<view class="messages-wrapper">
+  <view class="message-list animation-slide-bottom">
+    <view class="message-item" hover-class="mp-button-hover" wx:for="{{messages}}" wx:key="index" style="border-top: {{index == 0 ? '1px solid gainsboro' : ''}}">
+      <view class="picture padding">
+        <image></image>
+      </view>
+      <view class="message">
+        <view class="title">{{item.title}}</view>
+        <view class="content">{{item.content}}</view>
+      </view>
+      <view class="time-stamp">
+        <view class="time">
+          <text>{{item.timeStamp}}</text>
+        </view>
+        <view class="new-message radius">
+          <view class="cu-tag badge">new</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

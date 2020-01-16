@@ -1,0 +1,43 @@
+/* pages/messages/messages.wxss */
+.messages-wrapper .message-list  {
+  margin: 2rpx 0;
+}
+
+.messages-wrapper .message-list .message-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid gainsboro;
+  background-color: #fff;
+}
+
+.messages-wrapper .message-list .message-item image {
+  width: 106rpx;
+  height: 106rpx;
+  border-radius: 100%;
+  background-color: gainsboro;
+}
+
+.messages-wrapper .message-list .message-item .message {
+  width: 60%;
+}
+
+.messages-wrapper .message-list .message-item .message .title {
+  font-size: 1.2em;
+}
+
+.messages-wrapper .message-list .message-item .message .content {
+  color: #aaa;
+}
+
+.messages-wrapper .message-list .message-item .time-stamp {
+  width: 16%;
+  height: 100rpx;
+  text-align: center;
+  color: #aaa;
+}
+
+.messages-wrapper .message-list .message-item .time-stamp .new-message .cu-tag.badge {
+  position: initial;
+  margin: 20rpx 0;
+}

@@ -61,7 +61,7 @@
     </view>
   </view>
   <!-- 我的消息 -->
-  <view class="my-messages" hover-class="button-hover">
+  <view class="my-messages" hover-class="button-hover" bindtap="navigateToMessages">
     <view class="func-item">
       <text class="icon-mail padding-right-sm"></text>
       <text>我的消息</text>

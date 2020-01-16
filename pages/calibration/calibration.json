@@ -1,6 +1,7 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "van-toast": "../../../vant_weapp/components/dist/toast/index"
+    "van-toast": "../../../vant_weapp/components/dist/toast/index",
+    "van-dialog": "../../vant_weapp/components/dist/dialog/index"
   }
 }

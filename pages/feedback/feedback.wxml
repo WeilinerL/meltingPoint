@@ -21,11 +21,11 @@
     </view>
   </view>
   <view class="contact-way margin bg-white">
-    <input placeholder="手机/邮箱/QQ(选填)"></input>
+    <input placeholder="手机/邮箱/QQ(选填)" bindinput="inputContact"></input>
   </view>
-  <pic-upload title="上传图片(最多6张)" number="6"></pic-upload>
+  <pic-upload title="上传图片(最多6张)" number="6" bindpictures="getPictures"></pic-upload>
   <view class="button-confirm">
-    <button class="cu-btn mp-bg-blue text-white mp-radius-sm mp-button height">提交</button>
+    <button class="cu-btn mp-bg-blue text-white mp-radius mp-button height" bindtap="submit">提交</button>
   </view>
 </view>
 

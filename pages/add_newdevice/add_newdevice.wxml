@@ -33,7 +33,7 @@
     </view>
   </view>
   <view class="button-confirm">
-    <button class="cu-btn mp-bg-blue text-white mp-radius-sm mp-button height">注册</button>
+    <button class="cu-btn mp-bg-blue text-white mp-radius mp-button height">注册</button>
   </view>
 
 </view>

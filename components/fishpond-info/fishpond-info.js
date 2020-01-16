@@ -1,5 +1,6 @@
 // components/fishpond-info/fishpond-info.js
 //获取应用实例
+import Toast from '../../vant_weapp/components/dist/toast/toast';
 const app = getApp()
 
 Component({
@@ -82,6 +83,12 @@ Component({
       // console.log(e);
       wx.navigateTo({
         url: '../add_newfishpool/add_newfishpool',
+      })
+    },
+    /* 导航到添加设备页面 */
+    navigateToAddND() {
+      wx.navigateTo({
+        url: '../add_newdevice/add_newdevice',
       })
     }
   }

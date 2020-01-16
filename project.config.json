@@ -129,6 +129,19 @@
 					"pathName": "pages/feedback/feedback",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的消息",
+					"pathName": "pages/messages/messages",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "校准成功",
+					"pathName": "pages/calibration_success/calibration_success",
+					"scene": null
 				}
 			]
 		}

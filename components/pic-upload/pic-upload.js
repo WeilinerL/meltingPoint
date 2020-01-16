@@ -15,10 +15,6 @@ Component({
     number: {
       type: Number,
       value: 3 // 默认只能上传3张图片
-    },
-    hostUrl: {
-      type: String,
-      value: "" // 图片上传服务器地址
     }
   },
   options: {
@@ -55,6 +51,9 @@ Component({
             _that.setData({
               pictureData: _that.data.pictureData
             })
+            _that.triggerEvent('pictures', {
+              pictures: _that.data.pictureData
+            })
           }
         })
       }
@@ -66,6 +65,9 @@ Component({
       this.data.pictureData.splice(e.currentTarget.dataset.index, 1);
       this.setData({
         pictureData: this.data.pictureData
+      })
+      this.triggerEvent('pictures', {
+        pictures: this.data.pictureData
       })
 
     },

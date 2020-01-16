@@ -89,7 +89,7 @@ Page({
     }
     
   },
-  /* 监听用户输入密码事件 */
+  /* 监听用户输入用户名事件 */
   usernameInput(e) {
     var pattr = /[^0-9]*/g;
     this.data.username = e.detail.value;

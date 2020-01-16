@@ -98,6 +98,12 @@ Page({
       url: '../choose_fishpool/choose_fishpool',
     })
   },
+  /* 导航到我的消息 */
+  navigateToMessages() {
+    wx.navigateTo({
+      url: '../messages/messages',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

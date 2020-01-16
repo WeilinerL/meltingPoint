@@ -10,7 +10,8 @@
     "pages/choose_fishpool/choose_fishpool",
     "pages/add_newfishpool/add_newfishpool",
     "pages/add_newdevice/add_newdevice",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/messages/messages"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",
