@@ -1,13 +1,14 @@
 /* pages/messages/messages.wxss */
 .messages-wrapper .message-list  {
-  margin: 2rpx 0;
+  margin: 3px 0;
 }
 
 .messages-wrapper .message-list .message-item {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-bottom: 1px solid gainsboro;
+  /* border-bottom: 1px solid gainsboro; */
+  margin-bottom: 3px;
   background-color: #fff;
 }
 

@@ -1,0 +1,22 @@
+/* pages/message_detail/message_detail.wxss */
+.message-detail-container .message-detail {
+  color: #aaa;
+  height: 860rpx;
+  border-radius: 16rpx;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.message-detail-container .message-detail .head-portrait .pic {
+  width: 76rpx;
+  height: 76rpx;
+  background-color:#ccc;
+  border-radius: 50%;
+}
+
+.message-detail-container .message-detail .message-content {
+  height: 236rpx;
+  border-radius: 16rpx;
+  border: 1px solid #ddd;
+  overflow-y: scroll;
+}

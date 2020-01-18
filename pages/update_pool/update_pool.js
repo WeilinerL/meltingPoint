@@ -1,6 +1,7 @@
-// pages/add_newfishpool/add_newfishpool.js
+// pages/update_pool/update_pool.js
 //获取应用实例
 import Toast from '../../vant_weapp/components/dist/toast/toast';
+import Dialog from '../../vant_weapp/components/dist/dialog/dialog';
 const app = getApp()
 Page({
 
@@ -20,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
   },
 
   /**
@@ -72,7 +73,7 @@ Page({
   },
   /* 输入鱼塘名称检测 */
   inputPoolNameCheck() {
-    if(this.data.poolName == '') {
+    if (this.data.poolName == '') {
       Toast("请输入鱼塘名称!");
       return false
     } else {
@@ -89,7 +90,7 @@ Page({
   },
   /* 输入电话号码检测 */
   inputTelNumberCheck() {
-    if(this.data.telNumber == '') {
+    if (this.data.telNumber == '') {
       Toast("请输入电话号码!");
       return false;
     } else {
@@ -101,11 +102,11 @@ Page({
       }
       return true;
     }
-   
+
   },
   /* 输入所在区域检测 */
   inputPoolAreaCheck() {
-    if(this.data.poolArea == '') {
+    if (this.data.poolArea == '') {
       Toast("请输入鱼塘所在区域!");
       return false;
     }
@@ -113,14 +114,14 @@ Page({
   },
   /* 输入详细地址检测 */
   inputPoolAddressDetailCheck() {
-    if(this.data.poolAddressDetail == '') {
+    if (this.data.poolAddressDetail == '') {
       Toast("请输入鱼塘详细地址!");
       return false;
     }
     return true;
   },
   inputPictureCheck() {
-    if(!this.data.picture) {
+    if (!this.data.picture) {
       Toast("请上传一张鱼塘图片!");
       return false;
     }
@@ -128,42 +129,63 @@ Page({
   },
   /* 提交信息 */
   submit() {
-    if (this.inputPoolNameCheck() 
-    && this.inputTelNumberCheck() 
-    && this.inputPoolAreaCheck() 
-    && this.inputPoolAddressDetailCheck() 
-    && this.inputPictureCheck()) {
-      this.picUpload(this.data.picture).then((data) => {
-        app.request("POST", "/add_pool", {
-          user_id: app.globalData.userInfo.userId,
-          phone: this.data.telNumber,
-          pool_name: this.data.poolName,
-          pool_addr: this.data.poolAddressDetail,
-          pool_locale: this.data.poolArea,
-          pic_url: 'http://' + app.globalData.networkInfo.serverName + "/pic/" + data
-        }, successData => {
-          console.log(successData);
-          if (successData.status == 'OK') {
-            Toast("添加成功!");
-            // 一秒后返回
-            setTimeout(() => {
-              wx.navigateBack({
+    if (this.inputPoolNameCheck()
+      && this.inputTelNumberCheck()
+      && this.inputPoolAreaCheck()
+      && this.inputPoolAddressDetailCheck()
+      && this.inputPictureCheck()) {
+      Dialog.confirm({
+        title: '确认修改',
+        message: '您确定要修改此鱼塘信息吗?'
+      }).then(() => {
+        console.log('[INFO] 用户修改鱼塘信息')
+        // this.picUpload(this.data.picture).then((data) => {
+        //   app.request("POST", "/add_pool", {
+        //     user_id: app.globalData.userInfo.userId,
+        //     phone: this.data.telNumber,
+        //     pool_name: this.data.poolName,
+        //     pool_addr: this.data.poolAddressDetail,
+        //     pool_locale: this.data.poolArea,
+        //     pic_url: 'http://' + app.globalData.networkInfo.serverName + "/pic/" + data
+        //   }, successData => {
+        //     console.log(successData);
+        //     if (successData.status == 'OK') {
+        //       Toast("添加成功!");
+        //       // 一秒后返回
+        //       setTimeout(() => {
+        //         wx.navigateBack({
 
-              })
-            }, '1000')
-          } else {
-            Toast("添加失败!");
-          }
-        }, failData => {
-          Toast("添加失败!");
-          console.log(failData);
-        })
-      }).catch((e) => {
-        Toast("添加失败");
-        console.log(e);
-      })
+        //         })
+        //       }, '1000')
+        //     } else {
+        //       Toast("修改失败!");
+        //     }
+        //   }, failData => {
+        //     Toast("修改失败!");
+        //     console.log(failData);
+        //   })
+        // }).catch((e) => {
+        //   Toast("修改失败");
+        //   console.log(e);
+        // })
+      }).catch(() => {
+        console.log('[INFO] 用户取消修改鱼塘信息')
+      });
       
+
     }
+  },
+  /* 删除确认 */
+  deleteConfirm() {
+    Dialog.confirm({
+      title: '确认修改',
+      message: '您确定要删除此鱼塘吗?'
+    }).then(() => {
+      console.log('[INFO] 用户删除鱼塘')
+      
+    }).catch(() => {
+      console.log('[INFO] 用户取消删除鱼塘')
+    });
   },
   /* 获取图片列表 */
   getPictures(e) {

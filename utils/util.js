@@ -15,6 +15,10 @@ const formatNumber = n => {
 }
 
 /* 今天，昨天，近七天等 以整数凌晨到现在的秒数 */
+/* 
+  timeUnit: 时间单位默认为一天的秒数
+  startTime: 天数
+*/
 const transformTime = (timeUnit, startTime) => {
   let date = new Date();
   let hours = date.getHours();

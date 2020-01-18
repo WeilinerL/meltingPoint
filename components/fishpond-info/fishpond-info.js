@@ -85,10 +85,25 @@ Component({
         url: '../add_newfishpool/add_newfishpool',
       })
     },
-    /* 导航到添加设备页面 */
-    navigateToAddND() {
+    previewPic(e) {
+      // console.log(e);
+      wx.previewImage({
+        current: e.currentTarget.dataset.url,
+        urls: [e.currentTarget.dataset.url]
+      })
+    },
+    /* 导航到修改鱼塘信息页面 */
+    navigateToUpdatePool(e) {
+      // console.log(e);
       wx.navigateTo({
-        url: '../add_newdevice/add_newdevice',
+        url: '../update_pool/update_pool?pool_id=' + e.currentTarget.dataset.poolId,
+      })
+    },
+    /* 导航到添加设备页面 */
+    navigateToAddND(e) {
+      // console.log(e);
+      wx.navigateTo({
+        url: '../add_newdevice/add_newdevice?pool_id=' + e.currentTarget.dataset.poolId,
       })
     }
   }

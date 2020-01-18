@@ -1,0 +1,19 @@
+<!--pages/message_detail/message_detail.wxml-->
+<!-- 自定义导航栏 -->
+<top-bar hasBack="true" navigationBarTitleText="{{title}}"></top-bar>
+<view class="message-detail-container">
+  <view class="message-detail margin-xl padding-xl">
+    <view class="head-portrait margin-tb">
+      <image class="pic"></image>
+    </view>
+    <view class="message-content padding">
+      <text>{{content}}</text>
+    </view>
+    <view class="time padding-tb margin-bottom-xl">
+      <text>{{timeStamp}}</text>
+    </view>
+    <view class="button">
+      <button class="cu-btn mp-button mp-bg-blue text-white height-sm" bindtap="backToMessageList">我知道了</button>
+    </view>
+  </view>
+</view>

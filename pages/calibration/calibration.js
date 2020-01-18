@@ -20,7 +20,10 @@ Page({
     choosed2: "",
     choosed3: "",
     statusCode: -1,
-    standard: ["4.00", "6.86", "9.18"]
+    standard: ["4.00", "6.86", "9.18"],
+    deviceType: '', // 当前设备类型
+    presentCalibration: '', // 当前校准设备
+    isNow: false, // 是否为当前校准设备
   },
 
   /**
@@ -31,40 +34,13 @@ Page({
     this.setData({
       deviceName: options.device_type == 'ph' ? 'pH探头' : options.device_type == 'dissolved_oxygen' ? '溶解氧探头' : '盐度探头',
       serialId: options.serial_id,
-      statusCode: options.device_status_code
+      statusCode: options.device_status_code,
+      deviceType: options.device_type
     })
     this.setData({
       standard: wx.getStorageSync(options.device_type + "_standard") == '' ? this.data.standard : wx.getStorageSync(options.device_type + "_standard")
     })
-    // switch (this.data.deviceName) {
-    //   case "pH探头":
-    //     this.setData({
-    //       aimNumber: 4.00,
-    //       choosed1: "choosed",
-    //       choosed2: "",
-    //       choosed3: ""
-    //     })
-    //     break;
-    //   case "溶解氧探头":
-    //     this.setData({
-    //       aimNumber: 6.86,
-    //       choosed1: "",
-    //       choosed2: "choosed",
-    //       choosed3: ""
-    //     })
-    //     break;
-    //   case "盐度探头":
-    //     this.setData({
-    //       aimNumber: 9.18,
-    //       choosed1: "",
-    //       choosed2: "",
-    //       choosed3: "choosed"
-    //     })
-    //     break;
-    //   default:
-    //     Toast("非法进入校准页面!");
-    //     console.log("[ERROR]非法进入校准页面!");
-    // }
+
   },
 
   /**
@@ -84,16 +60,51 @@ Page({
     }
     if(this.data.statusCode == 300) {
       let presentCalibration = wx.getStorageSync('present_calibration') == 'ph' ? 'pH' : wx.getStorageSync('present_calibration') == 'salinity' ? '盐度' : '溶解氧';
+      this.data.presentCalibration = presentCalibration;
       let aimNumber = wx.getStorageSync("aimNumber");
       Toast("继续校准" + presentCalibration + "探头，目标示数: " + aimNumber);
       console.log("[INFO]继续校准" + presentCalibration +  "探头，目标示数: " + aimNumber);
       this.presentValue();
+    } else {
+      this.presentValue();
+
+      switch (wx.getStorageSync("aimNumber")) {
+        case wx.getStorageSync(this.data.deviceType + "_standard")[0]:
+          this.setData({
+            aimNumber: wx.getStorageSync(this.data.deviceType + "_standard")[0],
+            choosed1: "choosed",
+            choosed2: "",
+            choosed3: ""
+          })
+          break;
+        case wx.getStorageSync(this.data.deviceType + "_standard")[1]:
+          this.setData({
+            aimNumber: wx.getStorageSync(this.data.deviceType + "_standard")[1],
+            choosed1: "",
+            choosed2: "choosed",
+            choosed3: ""
+          })
+          break;
+        case wx.getStorageSync(this.data.deviceType + "_standard")[2]:
+          this.setData({
+            aimNumber: wx.getStorageSync(this.data.deviceType + "_standard")[2],
+            choosed1: "",
+            choosed2: "",
+            choosed3: "choosed"
+          })
+          break;
+        default:
+          // Toast("非法进入校准页面!");
+          // console.log("[ERROR]非法进入校准页面!");
+          this.data.isNow = true;
+          console.log("[INFO]非本设备校准");
+      }
     }
   },
 
   /* 方法区 */
   startCalibration() {
-    if(!this.data.timer) {
+    if(!this.data.isNow) {
       if (this.data.aimNumber == -1) {
         Toast("请选择目标示数进行校准!");
       } else {
@@ -102,7 +113,7 @@ Page({
           serial_id: this.data.serialId,
           value: Number(this.data.aimNumber)
         }, successData => {
-          Toast("开始校准...");
+          Toast("开始校准 目标示数: " + this.data.aimNumer);
           console.log(successData);
           // 轮询记录当前示数
           this.presentValue();
@@ -120,8 +131,9 @@ Page({
 
       }
     } else {
-      Toast("校准中!请勿重复校准!");
+      Toast("请先停止" + this.data.presentCalibration + "的校准，再进行本设备校准");
     }
+    
     
   },
   endCalibration() {

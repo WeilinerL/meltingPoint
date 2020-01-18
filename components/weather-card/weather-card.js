@@ -82,11 +82,12 @@ Component({
         success: function (res) {
           // 数据正常返回
           if (res.statusCode == 200) {
+            console.log(res);
             let forecast = res.data.data.forecast;
             forecast = forecast.map(item => {
               item.high = item.high.split(" ")[1].split("℃")[0];
               item.low = item.low.split(" ")[1].split("℃")[0];
-              item.fengli = item.fengli.match(/[0-9]\-[0-9].{1}/g)[0]
+              item.fengli = item.fengli.match(/[0-9-]+.{1}/g)[0]
               return item;
             })
             // console.log(forecast);

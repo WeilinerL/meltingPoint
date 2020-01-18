@@ -4,22 +4,25 @@
 
 <view class="messages-wrapper">
   <view class="message-list animation-slide-bottom">
-    <view class="message-item" hover-class="mp-button-hover" wx:for="{{messages}}" wx:key="index" style="border-top: {{index == 0 ? '1px solid gainsboro' : ''}}">
+    <view class="message-item" hover-class="mp-button-hover" wx:for="{{messages}}" wx:key="index" data-title="{{item.title}}" data-content="{{item.message}}" data-index="{{index}}" data-time-stamp="{{item.time}}" bindtap="navigateToMessageDetail">
       <view class="picture padding">
         <image></image>
       </view>
       <view class="message">
         <view class="title">{{item.title}}</view>
-        <view class="content">{{item.content}}</view>
+        <view class="content">{{item.message}}</view>
       </view>
       <view class="time-stamp">
         <view class="time">
-          <text>{{item.timeStamp}}</text>
+          <text>{{item.time}}</text>
         </view>
-        <view class="new-message radius">
+        <view class="new-message radius" wx:if="{{!item.readStatus}}">
           <view class="cu-tag badge">new</view>
         </view>
       </view>
     </view>
   </view>
 </view>
+
+<!-- 提示框 -->
+<van-toast id="van-toast" />

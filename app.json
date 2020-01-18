@@ -11,7 +11,9 @@
     "pages/add_newfishpool/add_newfishpool",
     "pages/add_newdevice/add_newdevice",
     "pages/feedback/feedback",
-    "pages/messages/messages"
+    "pages/messages/messages",
+    "pages/message_detail/message_detail",
+    "pages/update_pool/update_pool"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",

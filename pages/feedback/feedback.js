@@ -15,6 +15,7 @@ Page({
     feedbackInfo: '', // 反馈类型
     contact: '',
     pictures: [],
+    pictureURLs: [],
     inputLength: 0,
     submitted: false
   },
@@ -80,24 +81,72 @@ Page({
     // })
     // console.log(this.data.pictures);
   },
+  picUpload(picture) {
+    let _that = this;
+    return new Promise((resolve, reject) => {
+      if(picture) {
+        wx.uploadFile({
+          url: 'http://' + app.globalData.networkInfo.serverName + '/post_picture',
+          filePath: picture,
+          name: 'file',
+          formData: {
+            user_id: app.globalData.userInfo.userId,
+            file: picture,
+            path_to_local: ''
+          },
+          success(res) {
+            let data = JSON.parse(res.data)
+            console.log(data);
+            _that.data.pictureURLs.push('http://' + app.globalData.networkInfo.serverName + '/pic/' + data.url);
+            resolve(data.url);
+            //do something
+          },
+          fail: e => {
+            console.log("图片上传失败");
+            reject(e);
+          }
+        })
+      } else {
+        resolve("图片为空"); // 不要写为reject !important 否则无法同步 直接进入catch
+      }
+      
+    })
+  },
   /* 提交反馈 */
   submit() {
     if(this.submitCheck()) {
       if(!this.data.submitted) {
-        app.request("POST", "/report", {
-          user_id: app.globalData.userInfo.userId,
-          content: this.data.feedbackInfo,
-          contact: this.data.contact == '' ? '联系方式暂未提供' : this.data.contact,
-          report_type: this.data.value,
-          pictures: JSON.stringify(this.data.pictures)
-        }, successData => {
-          Toast("反馈成功!处理结果我们将在第一时间通知您!");
-          console.log(successData);
-          this.data.submitted = true;
-        }, failData => {
-          console.log(this.data);
-          Toast("反馈失败!")
-        })
+        console.log("[INFO]waiting...");
+        Promise.all([
+          this.picUpload(this.data.pictures[0]),
+          this.picUpload(this.data.pictures[1]),
+          this.picUpload(this.data.pictures[2]),
+          this.picUpload(this.data.pictures[3]),
+          this.picUpload(this.data.pictures[4]),
+          this.picUpload(this.data.pictures[5]),
+          this.picUpload(this.data.pictures[6]),
+        ]).then((data) => {
+          console.log("[INFO]picture upload all finshed");
+          console.log(this.data.pictureURLs);
+          app.request("POST", "/report", {
+            user_id: app.globalData.userInfo.userId,
+            content: this.data.feedbackInfo,
+            contact: this.data.contact == '' ? '联系方式暂未提供' : this.data.contact,
+            report_type: this.data.value,
+            pictures: JSON.stringify(this.data.pictureURLs)
+          }, successData => {
+            Toast("反馈成功!处理结果我们将在第一时间通知您!");
+            console.log(successData);
+            this.data.submitted = true;
+          }, failData => {
+            console.log(this.data);
+            Toast("反馈失败!")
+          })
+        }).catch((e) => {
+          // 一旦捕捉到图片为空便进入这儿
+          console.log(e);
+          Toast("反馈失败!");
+        });
       } else {
         Toast("您已提交反馈，请稍后再试!");
       }

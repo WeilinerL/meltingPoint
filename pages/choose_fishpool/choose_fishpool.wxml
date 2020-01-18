@@ -2,6 +2,6 @@
 <top-bar hasBack="true"></top-bar>
 <view class="choose-fishpool-container">
   <my-fishpond title="选择设备所在鱼塘"></my-fishpond> 
-  <mp-title titleFront="选择" titleLast="鱼塘" back="返回我的"></mp-title>
+  <mp-title titleFront="选择" titleLast="鱼塘"></mp-title>
   <fishpond-info routeType="pool_device"></fishpond-info>
 </view>

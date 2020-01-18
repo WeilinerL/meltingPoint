@@ -11,7 +11,7 @@
 .fishpond-info-container .fishpond-pic image {
   width: 236rpx;
   height: 166rpx;
-  background-color: azure;
+  background-color: #f9f9f9;
 }
 
 .fishpond-info-container .device-list .device-item .pool-info {
@@ -42,6 +42,7 @@
 }
 
 .fishpond-info-container .device-list .device-item .fishpond-info {
+  width: 56%;
   margin-left: 20rpx;
 }
 

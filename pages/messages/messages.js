@@ -1,4 +1,9 @@
 // pages/messages/messages.js
+//获取应用实例
+import Toast from '../../vant_weapp/components/dist/toast/toast';
+const app = getApp();
+var timeUtil = require("../../utils/util.js");
+
 Page({
 
   /**
@@ -7,21 +12,9 @@ Page({
   data: {
     messages: [
       {
-        title: "pH数据报警",
-        content: "鱼塘001pH示数为8.3，超过阀值8.0，持...",
-        timeStamp: "12:00",
-        readStatus: false
-      },
-      {
-        title: "pH数据报警",
-        content: "鱼塘001pH示数为8.3，超过阀值8.0，持...",
-        timeStamp: "12:00",
-        readStatus: false
-      },
-      {
-        title: "pH数据报警",
-        content: "鱼塘001pH示数为8.3，超过阀值8.0，持...",
-        timeStamp: "12:00",
+        title: "pH数据报警(测试用数据)",
+        message: "鱼塘001pH示数为8.3，超过阀值8.0，持...",
+        time: "12:00",
         readStatus: false
       }
     ]
@@ -31,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
   },
 
   /**
@@ -45,9 +38,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      messages: wx.getStorageSync('messageHandled')
+    })
   },
-
+  /* 方法区 */
+  navigateToMessageDetail(e) {
+    // console.log(e);
+    wx.navigateTo({
+      url: '../message_detail/message_detail?title=' + e.currentTarget.dataset.title + "&content=" + e.currentTarget.dataset.content + "&time_stamp=" + e.currentTarget.dataset.timeStamp,
+    })
+    this.data.messages[e.currentTarget.dataset.index].readStatus = true;
+    wx.setStorageSync('messageHandled', this.data.messages);
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

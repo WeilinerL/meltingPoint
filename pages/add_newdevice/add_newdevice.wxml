@@ -20,7 +20,7 @@
         <text class="icon-mobile"></text>
       </view>
       <view class="input-item">
-        <input placeholder="请输入您账号的手机号" placeholder-class="phcolor"></input>
+        <input placeholder="请输入您账号的手机号" placeholder-class="phcolor" value="{{telNumber}}" maxlength="11" bindinput="inputTelNumber"></input>
       </view>
     </view>
     <view class="form-item">
@@ -28,12 +28,12 @@
         <text class="icon-barcode"></text>
       </view>
       <view class="input-item">
-        <input placeholder="请输入设备序列号" placeholder-class="phcolor"></input>
+        <input placeholder="请输入设备序列号" placeholder-class="phcolor" bindinput="inputSerialNumber"></input>
       </view>
     </view>
   </view>
   <view class="button-confirm">
-    <button class="cu-btn mp-bg-blue text-white mp-radius mp-button height">注册</button>
+    <button class="cu-btn mp-bg-blue text-white mp-radius mp-button height" bindtap="submit">注册</button>
   </view>
 
 </view>

@@ -6,7 +6,8 @@
 
 /* 头像 */
 .my-wrapper .head {
-  border-top: 1px solid gainsboro;
+  /* border-top: 1px solid gainsboro; */
+  margin-top: 2px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -43,7 +44,8 @@
 
 /* 功能列表 */
 .my-wrapper .func-list .my-fishpond-info,.feedback,.my-settings {
-  border-top: 1px solid gainsboro;
+  /* border-top: 1px solid gainsboro; */
+  margin-top: 2px;
   background-color: #fff;
   display: flex;
   flex-direction: row;

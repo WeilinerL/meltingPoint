@@ -101,9 +101,11 @@ Page({
 
   },
   findDevice(deviceName, deviceObj) {
-    if (deviceObj[deviceName] != 0 && deviceObj[deviceName] != null) {
-      return deviceObj[deviceName];
-    }
+    if(deviceObj) {
+      if (deviceObj[deviceName] != 0 && deviceObj[deviceName] != null) {
+        return deviceObj[deviceName];
+      }
+    } 
     return false;
   },
   initDevice() {
@@ -169,6 +171,7 @@ Page({
     },
     failData => {
       Toast("设备数据加载失败!请稍后重试");
+      app.hideLoading();
       _that.setData({
         status: "fail"
       })

@@ -1,10 +1,11 @@
-<!--pages/add_newfishpool/add_newfishpool.wxml-->
+<!--pages/update_pool/update_pool.wxml-->
 <!-- 自定义导航栏 -->
-<top-bar hasBack="true" navigationBarTitleText="添加新的鱼塘"></top-bar>
+<top-bar hasBack="true" navigationBarTitleText="修改此鱼塘信息"></top-bar>
+
 <view class="add-newfishpond-wrapper">
   <view class="basic-info">
     <view class="title text-bold text-gray">
-      <text>基本资料</text>
+      <text>修改基本资料</text>
     </view>
     <view class="form-content">
       <view class="form-item">
@@ -43,10 +44,14 @@
   </view>
   <pic-upload title="上传图片(最多1张)" number="1" bindpictures="getPictures"></pic-upload>
   <view class="button-confirm padding">
-    <button class="cu-btn mp-bg-blue text-white mp-radius mp-button height" bindtap="submit">确认</button>
+    <button class="cu-btn mp-bg-blue text-white mp-radius mp-button height" bindtap="submit">确认修改</button>
+  </view>
+  <view class="button-confirm padding-bottom padding-lr">
+    <button class="cu-btn bg-red text-white mp-radius mp-button height" bindtap="deleteConfirm">删除此鱼塘</button>
   </view>
 </view>
 
 <!-- 提示框 -->
+<van-dialog id="van-dialog" />
+<!-- 提示框 -->
 <van-toast id="van-toast" />
-

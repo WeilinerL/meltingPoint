@@ -17,17 +17,17 @@
         }
         module.exports.tap = tap;
       </wxs> -->
-      <view class="device-item" id="{{item.pool_id}}" data-pool-id="{{item.pool_id}}" data-serial-id="{{item.serial_id}}" hover-class="button-hover" bindtap="seeFishpondDetail">
+      <view class="device-item" hover-class="button-hover" >
         <view class="pool-info">
           <view class="fishpond-pic margin">
-            <image src="{{item.fishpondPic}}"></image>
+            <image src="{{item.pic_url}}" data-url="{{item.pic_url}}" bindtap="previewPic"></image>
           </view>
-          <view class="fishpond-info">
+          <view class="fishpond-info" id="{{item.pool_id}}" data-pool-id="{{item.pool_id}}" data-serial-id="{{item.serial_id}}" bindtap="seeFishpondDetail">
             <view class="fishpond-name mp-text-blue">
-              <text decode="{{true}}">鱼塘: &emsp;{{item.pool_id}}</text>
+              <text decode="{{true}}">鱼塘: {{item.pool_name}}</text>
             </view>
             <view class="fishpond-address">
-              <text decode="{{true}}">地址: &nbsp;{{item.pool_name}}</text>
+              <text decode="{{true}}">地址: {{item.pool_addr}}</text>
             </view>
             <!-- <view class="device-num">
               <text decode="{{true}}">编号: &nbsp;{{item.serial_id}}</text>
@@ -44,10 +44,10 @@
       </view>
       <view class="buttons bg-white text-center animation-slide-bottom" wx:if="{{routeType != 'pool_data'}}">
         <view class="padding-sm">
-          <button class="cu-btn mp-bg-blue text-white">修改鱼塘信息</button>
+          <button class="cu-btn bg-red text-white" data-pool-id="{{item.pool_id}}" bindtap="navigateToUpdatePool">修改鱼塘信息</button>
         </view>
-        <view class="padding-sm" bindtap="navigateToAddND">
-          <button class="cu-btn bg-red">添加新设备</button>          
+        <view class="padding-sm" data-pool-id="{{item.pool_id}}" bindtap="navigateToAddND">
+          <button class="cu-btn mp-bg-blue text-white">添加新设备</button>          
         </view>
       </view>
 

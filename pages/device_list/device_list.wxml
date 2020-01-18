@@ -4,7 +4,7 @@
 <view class="device-list-wrapper">
   <!-- 我的鱼塘 -->
   <my-fishpond></my-fishpond>
-  <mp-title titleFront="鱼塘 {{poolId}}" titleLast="" back="返回鱼塘列表"></mp-title>
+  <mp-title titleFront="鱼塘 {{poolId}}" titleLast=""></mp-title>
   <view class="content" wx:if="{{deviceList.length != 0}}">
     <view class="device-item animation-slide-bottom" wx:for="{{deviceList}}" wx:key="index">
       <view class="img margin-lr">
